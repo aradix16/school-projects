@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 18:58:53 by aradix            #+#    #+#             */
-/*   Updated: 2023/12/21 19:11:30 by aradix           ###   ########.fr       */
+/*   Updated: 2023/12/21 23:19:01 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,28 @@ void	empty_buffer(t_printf *p)
 	p->buffer_i = 0;
 }
 
-void	store_in_buffer(t_printf *p, char *s, int n)
+void	store_str_in_buffer(t_printf *p, char *s, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n && s[i])
+	{
+		p->buffer[p->buffer_i++] = s[i++];
+		if (p->buffer_i == BUFFER_SIZE)
+			empty_buffer(p);
+	}
+}
+
+void	store_char_in_buffer(t_printf *p, char c, int n)
 {
 	int	i;
 
 	i = 0;
 	while (i < n)
 	{
-		p->buffer[p->buffer_i++] = s[i++];
+		p->buffer[p->buffer_i++] = c;
+		i++;
 		if (p->buffer_i == BUFFER_SIZE)
 			empty_buffer(p);
 	}

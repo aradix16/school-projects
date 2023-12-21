@@ -7,6 +7,8 @@ SRCS			=	srcs/ft_printf.c				\
 					srcs/buffer/buffer.c			\
 					srcs/parsing/parsing.c			\
 					srcs/parsing/get_flags.c		\
+					srcs/parsing/get_width.c		\
+					srcs/parsing/get_precision.c	\
 					srcs/parsing/get_type.c			\
 					srcs/handlers/string_handler.c	\
 
