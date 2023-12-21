@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 22:20:11 by aradix            #+#    #+#             */
-/*   Updated: 2023/12/21 18:27:22 by aradix           ###   ########.fr       */
+/*   Updated: 2023/12/21 18:46:14 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@ void	init_struct(t_printf *p, bool first_init)
 		p->buffer_i = 0;
 		p->ret = 0;
 	}
+}
+
+size_t	ft_strlen(const char *s)
+{
+	const char	*start = s;
+
+	while (*s)
+		s++;
+	return (s - start);
 }
 
 void	empty_buffer(t_printf *p)
@@ -36,9 +45,21 @@ void	stock_str(t_printf *p, char *s, int n)
 	while (i < n)
 	{
 		p->buffer[p->buffer_i++] = s[i++];
-		if (i == p->buffer_i)
+		if (p->buffer_i == BUFFER_SIZE)
 			empty_buffer(p);
 	}
+}
+
+void	string_handler(t_printf *p, char *arg)
+{
+	stock_str(p, arg, ft_strlen(arg));
+}
+
+void	get_type(t_printf *p)
+{
+	if (*p->frmt == 's')
+		return (string_handler(p, va_arg(p->ap, char *)));
+	// fall in default error handler
 }
 
 void	parsing(t_printf *p)
@@ -47,6 +68,8 @@ void	parsing(t_printf *p)
 	if (*p->frmt == '\0')
 		return ;
 	init_struct(p, false);
+	get_type(p);
+	p->frmt++;
 }
 
 int	ft_printf(const char *format, ...)
@@ -74,7 +97,7 @@ int	main(void)
 {
 	int	ret;
 
-	ret = ft_printf("Hello %s!", "World");
+	ret = ft_printf("Hello %s !", "World");
 	printf("\n\nret: %d\n", ret);
 	return (0);
 }

@@ -6,14 +6,14 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 22:21:07 by aradix            #+#    #+#             */
-/*   Updated: 2023/12/21 18:27:42 by aradix           ###   ########.fr       */
+/*   Updated: 2023/12/21 18:46:22 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# define BUFFER_SIZE 42
+# define BUFFER_SIZE 100
 
 # include <stdarg.h>
 # include <stdbool.h>
