@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 22:21:07 by aradix            #+#    #+#             */
-/*   Updated: 2023/12/22 00:50:36 by aradix           ###   ########.fr       */
+/*   Updated: 2023/12/22 16:21:59 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		get_type(t_printf *p);
 void	go_to_next_flags(t_printf *p); // use dedicated file
 
 /* HANDLERS */
+void		decimal_handler(t_printf *p, int d);
 void		string_handler(t_printf *p, char *arg);
 
 /* LIBFT TMP */
@@ -63,4 +64,5 @@ int			ft_strchr(const char *s, const char c);
 void		ft_print_bits(unsigned int num, int size);
 int			ft_isdigit(int c);
 int			ft_atoi(const char *nptr);
+int			ft_nbrlen(int n, int base);
 #endif

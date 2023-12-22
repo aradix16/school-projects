@@ -10,6 +10,7 @@ SRCS			=	srcs/ft_printf.c				\
 					srcs/parsing/get_width.c		\
 					srcs/parsing/get_precision.c	\
 					srcs/parsing/get_type.c			\
+					srcs/handlers/decimal_handler.c	\
 					srcs/handlers/string_handler.c	\
 
 OBJS			=	$(SRCS:.c=.o)

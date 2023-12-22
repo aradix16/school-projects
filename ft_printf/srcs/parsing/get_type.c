@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 19:23:57 by aradix            #+#    #+#             */
-/*   Updated: 2023/12/21 19:24:03 by aradix           ###   ########.fr       */
+/*   Updated: 2023/12/22 16:15:33 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	get_type(t_printf *p)
 {
+	if (*p->frmt == 'd')
+		return (decimal_handler(p, va_arg(p->ap, int)));
 	if (*p->frmt == 's')
 		return (string_handler(p, va_arg(p->ap, char *)));
 	// fall in default error handler

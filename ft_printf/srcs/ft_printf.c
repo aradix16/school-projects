@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 22:20:11 by aradix            #+#    #+#             */
-/*   Updated: 2023/12/22 00:58:50 by aradix           ###   ########.fr       */
+/*   Updated: 2023/12/22 16:48:47 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,39 @@ int	ft_atoi(const char *nptr)
 		n = ((n * 10) + (*nptr++ - '0'));
 	return (sign * n);
 }
+
+int	ft_nbrlen(int nb, int base)
+{
+	int  len;
+
+	len = 0;
+	if (nb < 0)
+		nb *= -1;
+	if (nb < base)
+		return (1);
+	while (nb > 0)
+	{
+		nb /= base;
+		len++;
+	}
+	return (len);
+}
+
+char	*ft_itoa(int nb, int base)
+char	*c_itoa(t_printf *p, uintmax_t nb, size_t len, char c)
+
+{
+	static char	s[101];
+
+	s[len] = '\0';
+	while (len--)
+	{
+		s[len] = (nb % p->base < 10) ? nb % p->base + '0'
+		: nb % p->base + c - 10;
+		nb /= p->base;
+	}
+	return (s);
+}
 /* ------- */
 
 void	init_struct(t_printf *p, bool first_init)
@@ -107,6 +140,11 @@ int	main(void)
 	int		ret;
 	char	*s;
 
+
+	/* %d */
+	ft_printf(">%d<", 42);
+
+	/*	%s */
 	s = NULL;
 	ret = ft_printf("1:H");
 	printf("%d\n", ret);
@@ -127,7 +165,7 @@ int	main(void)
 	ret = ft_printf("9:Hello %.*s!", -1, "World");
 	printf("%d\n", ret);
 	printf("\n\n\n");
-	/**/
+
 	ret = printf("1:H");
 	printf("%d\n", ret);
 	ret = printf("2:Hello %s!", "World");
