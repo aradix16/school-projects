@@ -5,7 +5,7 @@
 | Project                                  | Description                                                                           | Solo/Team | Language   | Grade   |
 |------------------------------------------|---------------------------------------------------------------------------------------|-----------|------------|---------|
 | [libft](./libft/)                        | Recoding basic functions from the standard C library to create a personal library     | Solo      | C          | 125/100 |
-| [get-next-line](./get-next-line/)        | A function that reads and returns a line from a file descriptor                       | Solo      | C          | 112/100 |
+| [get-next-line](./get-next-line/)        | A function that reads and returns a line from a file descriptor                       | Solo      | C          | 125/100 |
 <br>
 
 ## About my school

@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:16:47 by aradix            #+#    #+#             */
-/*   Updated: 2023/12/20 16:58:10 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/04 11:02:31 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,9 @@ void	*get_stored_line(t_save *p, ssize_t line_size)
 	void	*tmp;
 
 	line_size++;
-	line = ft_memdup(p->content, line_size + 1);
+	line = ft_memdup(p->content, line_size);
 	if (!line)
 		return (NULL);
-	((unsigned char *)line)[line_size] = '\0';
 	if (p->size > line_size)
 	{
 		tmp = ft_memdup(p->content + line_size, (p->size - line_size));

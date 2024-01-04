@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:18:17 by aradix            #+#    #+#             */
-/*   Updated: 2023/12/20 16:57:23 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/04 11:03:06 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,14 @@ void	*ft_memcpy(void *dst, void *src, ssize_t n)
 void	*ft_memdup(void *s, ssize_t n)
 {
 	void	*new;
-	ssize_t	i;
 
-	i = 0;
 	if (!s)
 		return (NULL);
 	new = (void *)malloc(sizeof(char) * (n + 1));
 	if (!new)
 		return (NULL);
 	((unsigned char *)new)[n] = '\0';
-	while (i < n)
-	{
-		((unsigned char *)new)[i] = ((unsigned char *)s)[i];
-		i++;
-	}
-	return (new);
+	return (ft_memcpy(new, s, n));
 }
 
 ssize_t	ft_memchr(const void *s, int c, ssize_t n)
