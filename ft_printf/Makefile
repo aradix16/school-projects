@@ -7,8 +7,11 @@ SRCS			=	main.c \
 					srcs/ft_printf.c				\
 					srcs/buffer/buffer.c			\
 					srcs/parsing/parsing.c			\
-					srcs/handlers/number_handler.c	\
+					srcs/handlers/char_handler.c	\
 					srcs/handlers/string_handler.c	\
+					srcs/handlers/ptr_handler.c	\
+					srcs/handlers/signed_handler.c	\
+					srcs/handlers/unsigned_handler.c	\
 
 OBJS			=	$(SRCS:.c=.o)
 OBJS_FOLDER		=	objs
