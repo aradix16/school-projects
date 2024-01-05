@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 18:58:53 by aradix            #+#    #+#             */
-/*   Updated: 2023/12/21 23:19:01 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/05 14:05:37 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	empty_buffer(t_printf *p)
 {
-	write(1, p->buffer, p->buffer_i);
-	p->ret += p->buffer_i;
-	p->buffer_i = 0;
+	write(1, p->buffer, p->buffer_index);
+	p->ret += p->buffer_index;
+	p->buffer_index = 0;
 }
 
 void	store_str_in_buffer(t_printf *p, char *s, int n)
@@ -26,8 +26,8 @@ void	store_str_in_buffer(t_printf *p, char *s, int n)
 	i = 0;
 	while (i < n && s[i])
 	{
-		p->buffer[p->buffer_i++] = s[i++];
-		if (p->buffer_i == BUFFER_SIZE)
+		p->buffer[p->buffer_index++] = s[i++];
+		if (p->buffer_index == BUFFER_SIZE)
 			empty_buffer(p);
 	}
 }
@@ -39,9 +39,9 @@ void	store_char_in_buffer(t_printf *p, char c, int n)
 	i = 0;
 	while (i < n)
 	{
-		p->buffer[p->buffer_i++] = c;
+		p->buffer[p->buffer_index++] = c;
 		i++;
-		if (p->buffer_i == BUFFER_SIZE)
+		if (p->buffer_index == BUFFER_SIZE)
 			empty_buffer(p);
 	}
 }

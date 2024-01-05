@@ -3,14 +3,11 @@ NAME			=	libftprintf.a
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror
 
-SRCS			=	srcs/ft_printf.c				\
+SRCS			=	main.c \
+					srcs/ft_printf.c				\
 					srcs/buffer/buffer.c			\
 					srcs/parsing/parsing.c			\
-					srcs/parsing/get_flags.c		\
-					srcs/parsing/get_width.c		\
-					srcs/parsing/get_precision.c	\
-					srcs/parsing/get_type.c			\
-					srcs/handlers/decimal_handler.c	\
+					srcs/handlers/number_handler.c	\
 					srcs/handlers/string_handler.c	\
 
 OBJS			=	$(SRCS:.c=.o)
