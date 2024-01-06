@@ -1,26 +1,35 @@
-NAME			=	libftprintf.a
+NAME		=	libftprintf.a
 
-CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror
+CC			= 	cc
+CFLAGS		= 	-Wall -Wextra -Werror
 
-SRCS			=	main.c \
-					srcs/ft_printf.c				\
-					srcs/buffer/buffer.c			\
-					srcs/parsing/parsing.c			\
-					srcs/handlers/char_handler.c	\
-					srcs/handlers/string_handler.c	\
-					srcs/handlers/ptr_handler.c	\
-					srcs/handlers/signed_handler.c	\
-					srcs/handlers/unsigned_handler.c	\
+HEADERS		= 	headers
 
-OBJS			=	$(SRCS:.c=.o)
-OBJS_FOLDER		=	objs
+SRCS		=	srcs/ft_printf.c					\
+				srcs/parsing/parsing.c				\
+				srcs/buffer/buffer.c				\
+				srcs/handlers/char_handler.c		\
+				srcs/handlers/string_handler.c		\
+				srcs/handlers/ptr_handler.c			\
+				srcs/handlers/signed_handler.c		\
+				srcs/handlers/unsigned_handler.c	\
 
-HEADERS_FOLDER	= 	headers
-
+OBJS_DIR	= 	objs
+OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
+ 
 all: $(NAME)
 
-$(NAME):
-	@$(CC) $(FLAGS) -I $(HEADERS_FOLDER) $(SRCS)
-	@./a.out
-	@rm -rf a.out
+$(NAME): $(OBJS)
+	ar rc $(NAME) $(OBJS)
+
+$(OBJS_DIR)/%.o: %.c $(HEADERS)
+	mkdir -p $(@D)
+	$(CC) $(CFLAGS) -I $(HEADERS) -o $@ -c $<
+
+clean: 
+	rm -rf $(OBJS_DIR)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
