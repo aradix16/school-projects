@@ -14,7 +14,7 @@ size_t	ft_strlen(const char *s)
 	return (s - start);
 }
 
-int	ft_nbrlen(intmax_t nb, short base)
+int	ft_nbrlen(uintmax_t nb, short base)
 {
 	int	len;
 
@@ -29,19 +29,17 @@ int	ft_nbrlen(intmax_t nb, short base)
 	return (len);
 }
 
-char	*ft_itoa_base(intmax_t nb, short base, int max)
+char	*ft_itoa_base(uintmax_t nb, int len, short base, int max)
 {
 	static char	s[100];
-	int			len;
 
-	len = ft_nbrlen(nb, base);
 	s[len] = '\0';
 	while (len--)
 	{
 		if (nb % base < 10)
 			s[len] = nb % base + '0';
 		else
-			s[len] = nb % base + max - 10; // usefile with base > 10 like hex
+			s[len] = nb % base + max - 10;
 		nb /= base;
 	}
 	return (s);
@@ -140,6 +138,7 @@ int	main(void)
 	ft_printf("%d\n", 2147483647);
 	ft_printf("%d\n", z);
 	ft_printf("%d%d%d%d%d\n", 1,2,3,4,5);
+	ft_printf("%d\n", 7147483648);
 	printf("-----\n");
 	printf("%d\n", 0);
 	printf("%d\n", 42);
@@ -148,6 +147,32 @@ int	main(void)
 	printf("%d\n", 2147483647);
 	printf("%d\n", z);
 	printf("%d%d%d%d%d\n", 1,2,3,4,5);
+	printf("%d\n", 7147483648);
+
+
+
+	printf("\n\n\n\n");
+
+
+
+	/* -- %i -- */ 
+	ft_printf("%i\n", 0);
+	ft_printf("%i\n", 42);
+	ft_printf("%i\n", -1);
+	ft_printf("%i\n", -420);
+	ft_printf("%i\n", 2147483647);
+	ft_printf("%i\n", z);
+	ft_printf("%i%d%i%d%i\n", 1,2,3,4,5);
+	ft_printf("%i\n", 7147483648);
+	printf("-----\n");
+	printf("%i\n", 0);
+	printf("%i\n", 42);
+	printf("%i\n", -1);
+	printf("%i\n", -420);
+	printf("%i\n", 2147483647);
+	printf("%i\n", z);
+	printf("%i%d%i%d%i\n", 1,2,3,4,5);
+	printf("%i\n", 7147483648);
 
 
 
@@ -167,6 +192,66 @@ int	main(void)
 	printf("%u\n", 1294967295);
 	printf("%u\n", -42);
 
+
+	printf("\n\n\n\n");
+
+	/* -- %u -- */ 
+	ft_printf("%u\n", -1);
+	ft_printf("%u\n", -10000);
+	ft_printf("%u\n", u);
+	ft_printf("%u\n", 1294967295);
+	ft_printf("%u\n", -42);
+	printf("-----\n");
+	printf("%u\n", -1);
+	printf("%u\n", -10000);
+	printf("%u\n", u);
+	printf("%u\n", 1294967295);
+	printf("%u\n", -42);
+
+
+	printf("\n\n\n\n");
+
+
+	/* -- %x -- */ 
+	ft_printf("%x\n", -1);
+	ft_printf("%x\n", -10000);
+	ft_printf("%x\n", u);
+	ft_printf("%x\n", 1294967295);
+	ft_printf("%x\n", -42);
+	ft_printf("%x\n", 2);
+	printf("-----\n");
+	printf("%x\n", -1);
+	printf("%x\n", -10000);
+	printf("%x\n", u);
+	printf("%x\n", 1294967295);
+	printf("%x\n", -42);
+	printf("%x\n", 2);
+
+
+	printf("\n\n\n\n");
+
+
+	/* -- %X -- */ 
+	ft_printf("%X\n", -1);
+	ft_printf("%X\n", -10000);
+	ft_printf("%X\n", u);
+	ft_printf("%X\n", 1294967295);
+	ft_printf("%X\n", -42);
+	ft_printf("%X\n", 2);
+	printf("-----\n");
+	printf("%X\n", -1);
+	printf("%X\n", -10000);
+	printf("%X\n", u);
+	printf("%X\n", 1294967295);
+	printf("%X\n", -42);
+	printf("%X\n", 2);
+
+
+	printf("\n\n\n\n");
+
+	/* -- %% -- */ 
+	ft_printf("%%\n");
+	printf("%%\n");
 
 
 

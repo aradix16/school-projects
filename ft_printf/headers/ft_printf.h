@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:39:33 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/05 17:26:29 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/06 07:45:22 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct s_printf
 
 /* test only */
 size_t		ft_strlen(const char *s);
-char	*ft_itoa_base(intmax_t nb, short base, int max);
+char		*ft_itoa_base(uintmax_t nb, int len, short base, int max);
+int			ft_nbrlen(uintmax_t nb, short base);
 
 int			ft_printf(const char *, ...);
 
@@ -49,7 +50,7 @@ void		empty_buffer(t_printf *p);
 void		char_handler(t_printf *p, int arg);
 void		string_handler(t_printf *p, char *arg);
 void		ptr_handler(t_printf *p, uintmax_t arg);
-void		signed_handler(t_printf *p, intmax_t arg);
-void		unsigned_handler(t_printf *p, uintmax_t arg);
+void		signed_handler(t_printf *p, intmax_t arg, short base, int max);
+void		unsigned_handler(t_printf *p, uintmax_t arg, short base, int max);
 
 #endif
