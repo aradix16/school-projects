@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 19:14:44 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/24 23:34:06 by aradix           ###   ########.fr       */
+/*   Created: 2023/11/09 14:55:35 by aradix            #+#    #+#             */
+/*   Updated: 2024/01/24 18:53:41 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-short	parsing(t_game *game, int ac, char **av)
+char	*ft_strchr(const char *s, int c)
 {
-	if (ac != 2)
-		return (1);
-	if (!is_file_extension_valid(av[1]))
-		return (2);
-	game->map = ft_read_file(av[1]);
-	if (!game->map)
-		return (3);
-	if (!is_map_valid(game))
-		return (4);
-	/* if (!is_map_playable(game)) */
-	/* 	return (5); */
-	return (0);
+	if ((unsigned char)c == '\0')
+		return ((char *)s + ft_strlen(s, '\0'));
+	while (*s)
+	{
+		if (*s == (unsigned char)c)
+			return ((char *)s);
+		s++;
+	}
+	return (NULL);
 }

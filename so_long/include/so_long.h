@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:48 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/24 12:57:28 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/24 18:40:34 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct s_game
 int			print_error(short err_id);
 
 short		parsing(t_game *game, int ac, char **av);
-short		parse_map(t_game *game, char *map);
-bool		is_boundary_line_valid(t_game *game);
-bool		is_inner_line_valid(t_game *gamemiddle_line_valid);
+bool		is_file_extension_valid(char *filepath);
+bool		is_map_valid(t_game *game);
+bool		is_map_playable(t_game *game);
 
 #endif

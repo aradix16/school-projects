@@ -10,6 +10,7 @@ SRCS			:=	ft_memncpy.c	\
 					ft_strncmp.c 	\
 					ft_read_file.c	\
 					ft_free.c		\
+					ft_strchr.c		\
 
 OBJS_DIR		:=	objs
 OBJS			:=	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))

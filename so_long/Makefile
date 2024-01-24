@@ -15,9 +15,10 @@ INCLUDE			:=		include
 SRCS			:=		srcs/so_long.c							\
 						srcs/error.c							\
 						srcs/parsing/parsing.c					\
-						srcs/parsing/map/parse_map.c			\
-						srcs/parsing/map/parse_line.c			\
-
+						srcs/parsing/check_file_extension.c		\
+						srcs/parsing/map/check_validity.c		\
+						srcs/parsing/map/check_playability.c	\
+						
 OBJS_DIR		:=		objs
 OBJS			:=       $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 

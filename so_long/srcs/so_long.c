@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:02 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/18 23:13:20 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/24 19:23:16 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int	main(int ac, char **av)
 	err = parsing(&game, ac, av);
 	if (err)
 	{
-		free(game.map);
+		if (game.map)
+			free(game.map);
 		return (print_error(err));
 	}
+	free(game.map);
 	return (0);
 }
