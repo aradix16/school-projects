@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:48 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/25 19:14:40 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/25 22:16:04 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define INVALID_MAP_CHARACTER 7
 # define DUPLICATE_EXIT 8
 # define DUPLICATE_PLAYER 9
+# define NO_EXIT_FOUND 10
+# define NO_PLAYER_FOUND 11
 
 # include "libft.h"
 
