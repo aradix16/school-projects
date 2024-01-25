@@ -6,14 +6,14 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:39:17 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/24 18:40:09 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/25 19:12:18 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	is_map_playable(t_game *game)
+short	check_map_playability(t_map *m)
 {
-	(void)game;
-	return (true);
+	(void)m;
+	return (0);
 }

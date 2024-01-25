@@ -6,85 +6,99 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:23:25 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/25 16:27:31 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/25 19:04:03 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	save_map_data(t_game *game, int c, size_t pos)
+short	save_map_data(t_map *m, int c, size_t c_position)
 {
 	if (c == 'E')
 	{
-		if (game->e_pos != 0)
-			return (false);
-		game->e_pos = pos;
+		if (m->exit_position)
+			return (DUPLICATE_EXIT);
+		m->exit_position = c_position;
 	}
 	else if (c == 'P')
 	{
-		if (game->p_pos != 0)
-			return (false);
-		game->p_pos = pos;
+		if (m->player_position)
+			return (DUPLICATE_PLAYER);
+		m->player_position = c_position;
 	}
 	else if (c == 'C')
-		++game->c_counter;
-	return (true);
+		++m->collectibles;
+	return (0);
 }
 
-bool	is_inner_line_valid(t_game *game, char *map, size_t pos)
+short	check_inner_line(t_map *m, char *line)
 {
+	short	err;
 	size_t	i;
+	size_t	map_position;
 
 	i = 0;
-	if (map[i] != '1')
-		return (false);
-	while (map[i] != '\n')
+	map_position = (m->col + 1) * m->row;
+	if (line[i] != WALL)
+		return (MAP_NOT_CLOSED);
+	while (line[i] != '\n')
 	{
-		if (ft_strchr("CEP", map[i]) != NULL)
+		if (line[i] == COLLECTIBLE || line[i] == EXIT || line[i] == PLAYER)
 		{
-			if (!save_map_data(game, map[i], pos + i))
-				return (false);
+			err = save_map_data(m, line[i], map_position + i);
+			if (err)
+				return (err);
 		}
-		else if (map[i] != '0' && map[i] != '1')
-			return (false);
+		else if (line[i] != WALL && line[i] != EMPTY)
+			return (INVALID_MAP_CHARACTER);
 		++i;
 	}
-	return (i == game->map_x && map[i - 1] == '1');
+	if (i != m->col)
+		return (INVALID_LINE_SIZE);
+	if (line[i - 1] != '1')
+		return (MAP_NOT_CLOSED);
+	return (0);
 }
 
-bool	is_boundary_line_valid(t_game *game, char *map)
+short	check_boundary_line(t_map *m, char *line)
 {
 	size_t	i;
 
 	i = 0;
-	while (map[i] && map[i] != '\n')
+	while (line[i] && line[i] != '\n')
 	{
-		if (map[i] != '1')
-			return (false);
+		if (line[i] != WALL)
+			return (MAP_NOT_CLOSED);
 		++i;
 	}
-	if (game->map_x == 0)
-		game->map_x = i;
-	return (i >= 3 && game->map_x == i);
+	if (m->col == 0)
+		m->col = i;
+	if (i < 3 || m->col != i)
+		return (INVALID_LINE_SIZE);
+	return (0);
 }
 
-bool	is_map_valid(t_game *game)
+short	check_map_validity(t_map *m, char *map)
 {
-	size_t	i;
+	short	err;
 
-	if (!is_boundary_line_valid(game, game->map))
-		return (false);
-	i = game->map_x + 1;
-	game->map_size = ft_strlen(game->map, '\0');
-	while (game->map[i + game->map_x] && game->map[i + game->map_x + 1])
+	if (!map)
+		return (CANNOT_READ_MAP_FILE);
+	m->map = map;
+	err = check_boundary_line(m, map);
+	if (err)
+		return (err);
+	map += m->col + 1;
+	while (*(map + (m->col + 1)) && *(map + (m->col + 2)))
 	{
-		if (!is_inner_line_valid(game, game->map + i, i))
-			return (false);
-		i += game->map_x + 1;
+		++m->row;
+		err = check_inner_line(m, map);
+		if (err)
+			return (err);
+		map += m->col + 1;
 	}
-	if (game->c_counter < 1)
-		return (false);
-	if (!is_boundary_line_valid(game, game->map + i))
-		return (false);
-	return (true);
+	err = check_boundary_line(m, map);
+	if (err)
+		return (err);
+	return (0);
 }
