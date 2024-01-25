@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:23:25 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/25 19:04:03 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/25 19:36:56 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ short	check_map_validity(t_map *m, char *map)
 	err = check_boundary_line(m, map);
 	if (err)
 		return (err);
+	m->row += 2;
 	return (0);
 }
