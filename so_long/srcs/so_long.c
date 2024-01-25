@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:02 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/24 19:23:16 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/25 16:19:41 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ void	init_struct(t_game *game)
 	game->map_x = 0;
 	game->map_y = 0;
 	game->map_size = 0;
+	game->e_pos = 0;
+	game->p_pos = 0;
+	game->c_counter = 0;
 }
 
 int	main(int ac, char **av)

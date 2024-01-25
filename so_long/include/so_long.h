@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:48 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/24 18:40:34 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/25 16:23:19 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct s_game
 	size_t	map_x;
 	size_t	map_y;
 	size_t	map_size;
+	size_t	e_pos;
+	size_t	p_pos;
+	size_t	c_counter;
 }			t_game;
 
 # include <stdbool.h>

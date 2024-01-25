@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:14:44 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/24 23:34:06 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/25 16:24:42 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ short	parsing(t_game *game, int ac, char **av)
 		return (4);
 	/* if (!is_map_playable(game)) */
 	/* 	return (5); */
+	printf("%zu\n", game->c_counter);
 	return (0);
 }

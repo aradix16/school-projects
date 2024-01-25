@@ -6,20 +6,32 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:23:25 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/24 23:59:48 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/25 16:27:31 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	save_map_data(t_game *game, int c)
+bool	save_map_data(t_game *game, int c, size_t pos)
 {
-	(void)game;
-	(void)c;
+	if (c == 'E')
+	{
+		if (game->e_pos != 0)
+			return (false);
+		game->e_pos = pos;
+	}
+	else if (c == 'P')
+	{
+		if (game->p_pos != 0)
+			return (false);
+		game->p_pos = pos;
+	}
+	else if (c == 'C')
+		++game->c_counter;
 	return (true);
 }
 
-bool	is_inner_line_valid(t_game *game, char *map)
+bool	is_inner_line_valid(t_game *game, char *map, size_t pos)
 {
 	size_t	i;
 
@@ -30,7 +42,7 @@ bool	is_inner_line_valid(t_game *game, char *map)
 	{
 		if (ft_strchr("CEP", map[i]) != NULL)
 		{
-			if (!save_map_data(game, map[i]))
+			if (!save_map_data(game, map[i], pos + i))
 				return (false);
 		}
 		else if (map[i] != '0' && map[i] != '1')
@@ -66,10 +78,12 @@ bool	is_map_valid(t_game *game)
 	game->map_size = ft_strlen(game->map, '\0');
 	while (game->map[i + game->map_x] && game->map[i + game->map_x + 1])
 	{
-		if (!is_inner_line_valid(game, game->map + i))
+		if (!is_inner_line_valid(game, game->map + i, i))
 			return (false);
 		i += game->map_x + 1;
 	}
+	if (game->c_counter < 1)
+		return (false);
 	if (!is_boundary_line_valid(game, game->map + i))
 		return (false);
 	return (true);
