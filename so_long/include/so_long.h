@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:48 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/26 14:56:23 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/26 15:03:19 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define PLAYER 'P'
 # define EXIT 'E'
 /* */
+# define MALLOC_ERROR 1
 # define INVALID_ARG_NUMBERS 2
 # define INVALID_FILE_EXTENSION 3
 # define CANNOT_READ_MAP_FILE 4
@@ -38,7 +39,7 @@
 # define NO_PLAYER_FOUND 12
 # define UNPLAYABLE_MAP 13
 
-# define MALLOC_ERROR 12
+/* */
 
 # include "libft.h"
 
