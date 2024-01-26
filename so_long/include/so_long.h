@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:48 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/25 22:16:04 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/26 14:56:23 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,23 @@
 # define INVALID_MAP_CHARACTER 7
 # define DUPLICATE_EXIT 8
 # define DUPLICATE_PLAYER 9
-# define NO_EXIT_FOUND 10
-# define NO_PLAYER_FOUND 11
+# define NO_COLLECTIBLE_FOUND 10
+# define NO_EXIT_FOUND 11
+# define NO_PLAYER_FOUND 12
+# define UNPLAYABLE_MAP 13
+
+# define MALLOC_ERROR 12
 
 # include "libft.h"
 
-typedef struct s_map
-{
-	char		*map;
-	size_t		col;
-	size_t		row;
-	size_t		exit_position;
-	size_t		player_position;
-	size_t		collectibles;
-}				t_map;
-
 typedef struct s_game
 {
-	t_map		m;
+	const char	*map;
+	size_t		cols;
+	size_t		rows;
+	size_t		collectibles_count;
+	size_t		exit_position;
+	size_t		player_position;
 }				t_game;
 
 # include <stdbool.h>
@@ -60,8 +59,8 @@ int				print_error(short err_id);
 
 /* PARSING */
 short			parsing(t_game *game, int ac, char **av);
-bool			check_file_extension(char *filepath);
-short			check_map_validity(t_map *m, char *map);
-short			check_map_playability(t_map *m);
+bool			check_file_extension(const char *filepath);
+short			check_map_validity(t_game *game, char *map_content);
+short			check_map_playability(t_game game);
 
 #endif

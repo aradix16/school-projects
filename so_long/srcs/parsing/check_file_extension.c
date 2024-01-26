@@ -6,13 +6,13 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:22:58 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/25 19:06:19 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/26 13:58:23 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	check_file_extension(char *filepath)
+bool	check_file_extension(const char *filepath)
 {
 	size_t	len;
 

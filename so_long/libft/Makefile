@@ -11,6 +11,11 @@ SRCS			:=	ft_memncpy.c	\
 					ft_read_file.c	\
 					ft_free.c		\
 					ft_strchr.c		\
+					ft_strdup.c		\
+					ft_strlcpy.c	\
+					ft_memdup.c		\
+					ft_calloc.c		\
+					ft_memset.c		\
 
 OBJS_DIR		:=	objs
 OBJS			:=	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))

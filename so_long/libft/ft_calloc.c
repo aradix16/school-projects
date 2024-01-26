@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 19:14:44 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/26 14:51:27 by aradix           ###   ########.fr       */
+/*   Created: 2023/11/13 10:17:50 by aradix            #+#    #+#             */
+/*   Updated: 2024/01/26 12:51:47 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-short	parsing(t_game *game, int ac, char **av)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	short	err;
+	void	*ptr;
 
-	if (ac != 2)
-		return (INVALID_ARG_NUMBERS);
-	if (!check_file_extension(av[1]))
-		return (INVALID_FILE_EXTENSION);
-	err = check_map_validity(game, ft_read_file(av[1]));
-	if (err)
-		return (err);
-	err = check_map_playability(*game);
-	if (err)
-		return (err);
-	return (0);
+	ptr = NULL;
+	if ((nmemb > 0) && ((SIZE_MAX / nmemb) < size))
+		return (ptr);
+	ptr = (void *)malloc(size * nmemb);
+	if (ptr == NULL)
+		return (NULL);
+	if (nmemb == 0 || size == 0)
+		return (ptr);
+	ft_memset(ptr, 0, nmemb * size);
+	return (ptr);
 }

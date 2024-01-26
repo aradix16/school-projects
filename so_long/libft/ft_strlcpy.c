@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:21:59 by aradix            #+#    #+#             */
-/*   Updated: 2023/12/08 15:52:41 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/25 21:19:15 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 	i = 0;
 	if (size == 0)
-		return (ft_strlen(src));
+		return (ft_strlen(src, '\0'));
 	while (src[i] && (i < size - 1))
 	{
 		dst[i] = src[i];
