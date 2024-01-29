@@ -3,9 +3,6 @@ NAME			:=		so_long
 CC				:=		cc
 CFLAGS			:=		-Wall -Wextra -Werror
 
-#MLX_FLAGS		:=		-Lmlx -lmlx -L/usr/lib/x11	-lXext -lX11
-#MLX_INCLUDE		:=		-I/opt/X11/include -Imlx
-
 LIBFT_PATH		:=		libft
 LIBFT_INCLUDE	:=		$(LIBFT_PATH)/include
 LIBFT			:=		$(LIBFT_PATH)/libft.a
@@ -20,17 +17,20 @@ INCLUDE			:=		include
 SRCS			:=		srcs/so_long.c							\
 						srcs/error.c							\
 						srcs/parsing/parsing.c					\
-						srcs/parsing/check_file_extension.c		\
-						srcs/parsing/map/check_validity.c		\
-						srcs/parsing/map/check_playability.c	\
-						
+						srcs/parsing/map/extension_checker.c	\
+						srcs/parsing/map/validity_checker.c		\
+						srcs/parsing/map/playability_checker.c	\
+						srcs/engine/start.c						\
+						srcs/engine/window.c					\
+						srcs/engine/graphics.c					\
+
 OBJS_DIR		:=		objs
-OBJS			:=       $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
+OBJS			:=		$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	@$(CC) $(MLX_FLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLX)
+	$(CC) $(MLX_FLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLX)
 
 $(OBJS_DIR)/%.o: %.c
 	mkdir -p $(@D)

@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:48 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/29 09:53:55 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/29 22:00:35 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,47 @@
 # define NO_EXIT_FOUND 11
 # define NO_PLAYER_FOUND 12
 # define UNPLAYABLE_MAP 13
-
+# define MLX_INIT_FAILED 14
+# define MLX_WINDOW_FAILED 15
+# define MLX_TEXTURES_ERROR 16
 /* */
+
+# define TILE_SIZE 100
 
 # include "libft.h"
 # include "mlx.h"
 
-typedef struct s_game
+typedef struct s_texture
 {
-	const char	*map;
+}				t_texture;
+
+typedef struct s_window
+{
+	int			x;
+	int			y;
+}				t_window;
+
+typedef struct s_mlx
+{
+	void		*ptr;
+	void		*window;
+}				t_mlx;
+
+typedef struct s_map
+{
+	char		*map;
 	size_t		cols;
 	size_t		rows;
+}				t_map;
+
+typedef struct s_game
+{
 	size_t		collectibles_count;
 	size_t		exit_position;
 	size_t		player_position;
+	t_map		*map;
+	t_mlx		*mlx;
+	t_window	*window;
 }				t_game;
 
 # include <stdbool.h>
@@ -61,8 +88,13 @@ int				print_error(short err_id);
 
 /* PARSING */
 short			parsing(t_game *game, int ac, char **av);
-bool			check_file_extension(const char *filepath);
-short			check_map_validity(t_game *game, char *map_content);
-short			check_map_playability(t_game game);
+bool			extension_checker(const char *filepath);
+short			validity_checker(t_game *game, char *map);
+short			playability_checker(t_game game);
+
+/* ENGINE */
+short			start_engine(t_game *game);
+bool			create_window(t_window *window, t_mlx *mlx, t_map *map);
+bool			load_textures(t_texture *texture, t_mlx *mlx);
 
 #endif

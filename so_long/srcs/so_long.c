@@ -6,24 +6,17 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:02 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/29 09:50:06 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/29 20:46:04 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	mlx_stuff()
+void	init_struct(t_game *game, t_map *map)
 {
-	void *mlx;
-
-	mlx = mlx_init();
-}
-
-
-void	init_struct(t_game *game)
-{
-	game->cols = 0;
-	game->rows = 0;
+	map->cols = 0;
+	map->rows = 0;
+	game->map = map;
 	game->collectibles_count = 0;
 	game->exit_position = 0;
 	game->player_position = 0;
@@ -33,12 +26,16 @@ int	main(int ac, char **av)
 {
 	short	err;
 	t_game	game;
+	t_map	map;
 
-	init_struct(&game);
+	init_struct(&game, &map);
 	err = parsing(&game, ac, av);
 	if (err)
 		return (printf("err\n"));
-	mlx_stuff();
+	err = start_engine(&game);
+	if (err)
+		return (printf("err2\n"));
+
+	free(map.map);
 	return (0);
 }
-

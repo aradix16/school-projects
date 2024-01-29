@@ -1,2 +1,3 @@
 [ ] in school repo, add mlx as submodule
-[X] comile mlx from Makefile
+[X] compile mlx from Makefile
+[ ] rewrite function names to match w/ file name

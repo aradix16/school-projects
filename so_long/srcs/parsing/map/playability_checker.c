@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_playability.c                                :+:      :+:    :+:   */
+/*   playability_checker.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:00:10 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/26 15:01:06 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/29 19:36:21 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ bool	explore(t_game *game, char *map, size_t i)
 	map[i] = WALL;
 	if (explore(game, map, i + 1)
 		|| explore(game, map, i - 1)
-		|| explore(game, map, i + (game->cols + 1))
-		|| explore(game, map, i - (game->cols + 1)))
+		|| explore(game, map, i + (game->map->cols + 1))
+		|| explore(game, map, i - (game->map->cols + 1)))
 		return (true);
 	return (false);
 }
 
-short	check_map_playability(t_game game)
+short	playability_checker(t_game game)
 {
-	char	*tmp;
+	char	*map_cpy;
 
 	if (game.collectibles_count < 1)
 		return (NO_COLLECTIBLE_FOUND);
@@ -41,14 +41,11 @@ short	check_map_playability(t_game game)
 		return (NO_EXIT_FOUND);
 	if (!game.player_position)
 		return (NO_PLAYER_FOUND);
-	tmp = ft_strdup(game.map);
-	if (!tmp)
+	map_cpy = ft_strdup(game.map->map);
+	if (!map_cpy)
 		return (MALLOC_ERROR);
-	if (!explore(&game, tmp, game.player_position))
-	{
-		free(tmp);
-		return (UNPLAYABLE_MAP);
-	}
-	free(tmp);
+	if (!explore(&game, map_cpy, game.player_position))
+		return (free(map_cpy), UNPLAYABLE_MAP);
+	free(map_cpy);
 	return (0);
 }
