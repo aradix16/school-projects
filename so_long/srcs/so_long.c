@@ -6,11 +6,19 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:02 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/26 14:49:14 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/29 09:50:06 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	mlx_stuff()
+{
+	void *mlx;
+
+	mlx = mlx_init();
+}
+
 
 void	init_struct(t_game *game)
 {
@@ -30,5 +38,7 @@ int	main(int ac, char **av)
 	err = parsing(&game, ac, av);
 	if (err)
 		return (printf("err\n"));
+	mlx_stuff();
 	return (0);
 }
+

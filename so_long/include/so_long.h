@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:48 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/26 15:03:19 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/29 09:53:55 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 /* */
 
 # include "libft.h"
+# include "mlx.h"
 
 typedef struct s_game
 {

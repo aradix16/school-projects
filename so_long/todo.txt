@@ -1,0 +1,2 @@
+[ ] in school repo, add mlx as submodule
+[X] comile mlx from Makefile
