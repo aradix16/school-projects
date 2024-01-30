@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:48 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/30 13:27:16 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/30 14:16:45 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@
 
 # define TILE_SIZE 100
 
+/* */
+# define GREEN 65280;
+
 # include "libft.h"
 # include "mlx.h"
 
@@ -59,54 +62,56 @@ typedef struct s_image
 
 typedef struct s_texture
 {
-	void	*ptr;
-	int		width;
-	int		height;
-}			t_texture;
+	void		*ptr;
+	int			width;
+	int			height;
+}				t_texture;
 
 typedef struct s_window
 {
-	int		x;
-	int		y;
-}			t_window;
+	int			x;
+	int			y;
+}				t_window;
 
 typedef struct s_mlx
 {
-	void	*ptr;
-	void	*window;
-}			t_mlx;
+	void		*ptr;
+	void		*window;
+	t_window	*w;
+	t_image		*i;
+}				t_mlx;
 
 typedef struct s_map
 {
-	char	*map;
-	size_t	cols;
-	size_t	rows;
-}			t_map;
+	char		*map;
+	size_t		cols;
+	size_t		rows;
+}				t_map;
 
 typedef struct s_game
 {
-	size_t	collectibles_count;
-	size_t	exit_position;
-	size_t	player_position;
-	t_map	*map;
-}			t_game;
+	size_t		collectibles_count;
+	size_t		exit_position;
+	size_t		player_position;
+	t_map		*map;
+}				t_game;
 
 # include <stdbool.h>
 # include <stdio.h> // ---
 
-int			print_error(short err_id);
+int				print_error(short err_id);
 
 /* PARSING */
-short		parsing(t_game *game, int ac, char **av);
-bool		extension_checker(const char *filepath);
-short		validity_checker(t_game *game, char *map);
-short		playability_checker(t_game game);
+short			parsing(t_game *game, int ac, char **av);
+bool			extension_checker(const char *filepath);
+short			validity_checker(t_game *game, char *map);
+short			playability_checker(t_game game);
 
 /* ENGINE */
-short		start_engine(t_game *game);
-bool		create_window(t_window *window, t_mlx *mlx, t_map *map);
-bool		load_textures(t_texture *texture, t_mlx *mlx);
-void		game_loop(t_game *game, t_mlx *mlx, t_window *window);
-int			close_window(void);
+short			start_engine(t_game *game);
+bool			create_window(t_window *window, t_mlx *mlx, t_map *map);
+bool			load_textures(t_texture *texture, t_mlx *mlx);
+void			game_loop(t_game *game, t_mlx *mlx, t_window *window);
+int				close_window(void);
 
 #endif
