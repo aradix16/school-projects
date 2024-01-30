@@ -1,3 +1,5 @@
 [ ] in school repo, add mlx as submodule
 [X] compile mlx from Makefile
-[ ] rewrite function names to match w/ file name
+[X] rewrite function names to match w/ file name
+[ ] clean libft
+[ ] no leaks 

@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:03:02 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/29 20:46:04 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/30 13:30:17 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int	main(int ac, char **av)
 	if (err)
 		return (printf("err2\n"));
 
-	free(map.map);
+	/* free(map.map); */
 	return (0);
 }

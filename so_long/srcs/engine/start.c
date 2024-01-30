@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:45:53 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/29 22:00:23 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/30 12:28:46 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@ short	start_engine(t_game *game)
 		return (MLX_WINDOW_FAILED);
 	if (!load_textures(&texture, &mlx))
 		return (MLX_TEXTURES_ERROR);
-	// call game loop
-	// listen for input
-	//
-	//
-	/* free(mlx.ptr); */
-	/* mlx.ptr = NULL; */
-	// to free mlx ptr --
-	/* mlx_destroy_display(p); */
-	/* free(p); */
+	game_loop(game, &mlx, &window);
 	return (0);
 }

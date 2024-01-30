@@ -23,6 +23,7 @@ SRCS			:=		srcs/so_long.c							\
 						srcs/engine/start.c						\
 						srcs/engine/window.c					\
 						srcs/engine/graphics.c					\
+						srcs/engine/game_loop.c					\
 
 OBJS_DIR		:=		objs
 OBJS			:=		$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
