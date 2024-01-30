@@ -25,6 +25,8 @@ SRCS			:=		srcs/so_long.c							\
 						srcs/engine/game_loop.c					\
 						srcs/engine/events.c					\
 						srcs/engine/clean_mlx.c					\
+						srcs/engine/move_player.c				\
+						srcs/engine/render.c					\
 
 OBJS_DIR		:=		objs
 OBJS			:=		$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))

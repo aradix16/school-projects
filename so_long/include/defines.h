@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:37:22 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/30 20:49:18 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/30 22:44:20 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@
 # define NB_TEXTURES 5
 # define TILE_SIZE 100
 
+/* KEYS */
 # define ESC 65307
+# define UP 119
+# define DOWN 115
+# define LEFT 97
+# define RIGHT 100
+
+/* TO REMOVE */
+# define GREEN 65280;
 
 #endif

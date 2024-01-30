@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:37:47 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/30 20:58:26 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/30 22:40:30 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ typedef struct s_textures
 
 typedef struct s_image
 {
+	void		*ptr;
+	char		*data;
 }				t_image;
 
 typedef struct s_window

@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:36:41 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/30 21:54:16 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/30 23:45:00 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ void	game_loop(t_game *game, t_mlx *mlx);
 int		stop_loop(t_game *game);
 int		on_update(t_mlx *mlx);
 int		on_key_press(int key, t_game *game);
+int		on_key_release(int key, t_game *game);
 short	clean_mlx(t_mlx *mlx, short state);
+
+int		move_player(t_game *game, int step);
+void	render(t_game *game);
 
 #endif
