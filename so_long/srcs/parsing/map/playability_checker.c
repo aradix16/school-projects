@@ -5,47 +5,50 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 15:00:10 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/29 19:36:21 by aradix           ###   ########.fr       */
+/*   Created: 2024/01/30 15:54:19 by aradix            #+#    #+#             */
+/*   Updated: 2024/01/30 18:51:02 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	explore(t_game *game, char *map, size_t i)
+bool	explore(t_state *state, char *map, size_t i, const size_t cols)
 {
-	if (game->exit_position == 0 && game->collectibles_count == 0)
+	if (state->exit_position == 0 && state->collectibles_count == 0)
 		return (true);
 	if (map[i] == WALL)
 		return (false);
 	if (map[i] == COLLECTIBLE)
-		game->collectibles_count--;
+		--state->collectibles_count;
 	else if (map[i] == EXIT)
-		game->exit_position = 0;
+		state->exit_position = 0;
 	map[i] = WALL;
-	if (explore(game, map, i + 1)
-		|| explore(game, map, i - 1)
-		|| explore(game, map, i + (game->map->cols + 1))
-		|| explore(game, map, i - (game->map->cols + 1)))
+	if (explore(state, map, i + 1, cols)
+		|| explore(state, map, i - 1, cols)
+		|| explore(state, map, i + (cols + 1), cols)
+		|| explore(state, map, i - (cols + 1), cols))
 		return (true);
 	return (false);
 }
 
-short	playability_checker(t_game game)
+short	playability_checker(t_map *map, t_state state)
 {
-	char	*map_cpy;
+	char	*cpy;
 
-	if (game.collectibles_count < 1)
+	if (state.collectibles_count < 1)
 		return (NO_COLLECTIBLE_FOUND);
-	if (!game.exit_position)
+	if (!state.exit_position)
 		return (NO_EXIT_FOUND);
-	if (!game.player_position)
+	if (!state.player_position)
 		return (NO_PLAYER_FOUND);
-	map_cpy = ft_strdup(game.map->map);
-	if (!map_cpy)
+	cpy = ft_strdup(map->ptr);
+	if (!cpy)
 		return (MALLOC_ERROR);
-	if (!explore(&game, map_cpy, game.player_position))
-		return (free(map_cpy), UNPLAYABLE_MAP);
-	free(map_cpy);
-	return (0);
+	if (!explore(&state, cpy, state.player_position, map->cols))
+	{
+		free(cpy);
+		return (UNPLAYABLE_MAP);
+	}
+	free(cpy);
+	return (SUCCESS);
 }

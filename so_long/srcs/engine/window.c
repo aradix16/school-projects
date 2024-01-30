@@ -5,40 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/29 20:31:44 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/30 13:16:55 by aradix           ###   ########.fr       */
+/*   Created: 2024/01/30 19:12:33 by aradix            #+#    #+#             */
+/*   Updated: 2024/01/30 21:54:10 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	close_window()
-{
-	/* mlx_destroy_window(vars->mlx, vars->win); */
-	exit(0);
-	return (0);
-}
-
 void	set_window_size(t_window *window, t_mlx *mlx, t_map *map)
 {
-	int	x;
-	int	y;
-	// use width height
+	int	width;
+	int	height;
 
-	mlx_get_screen_size(mlx->ptr, &x, &y);
-	if (map->rows < ((size_t)x * TILE_SIZE))
-		x = map->rows * TILE_SIZE;
-	if (map->cols < ((size_t)y * TILE_SIZE))
-		y = map->cols * TILE_SIZE;
-	window->y = y;
-	window->x = x;
+	mlx_get_screen_size(mlx->ptr, &width, &height);
+	if ((map->cols * TILE_SIZE) < ((size_t)width))
+		width = map->cols * TILE_SIZE;
+	if ((map->rows * TILE_SIZE) < ((size_t)height))
+		height = map->rows * TILE_SIZE;
+	window->width = width;
+	window->height = height;
 }
 
 bool	create_window(t_window *window, t_mlx *mlx, t_map *map)
 {
+	mlx->window = window;
 	set_window_size(window, mlx, map);
-	mlx->window = mlx_new_window(mlx->ptr, window->y, window->x, "so_long");
-	if (!mlx->window)
+	window->ptr = mlx_new_window(mlx->ptr, window->width, window->height,
+			"so_long");
+	if (!window->ptr)
 		return (false);
 	return (true);
 }

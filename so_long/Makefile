@@ -15,15 +15,16 @@ MLX				:=		$(MLX_PATH)/libmlx.a
 INCLUDE			:=		include
 
 SRCS			:=		srcs/so_long.c							\
-						srcs/error.c							\
+						srcs/error_handler.c					\
 						srcs/parsing/parsing.c					\
 						srcs/parsing/map/extension_checker.c	\
 						srcs/parsing/map/validity_checker.c		\
 						srcs/parsing/map/playability_checker.c	\
 						srcs/engine/start.c						\
 						srcs/engine/window.c					\
-						srcs/engine/graphics.c					\
 						srcs/engine/game_loop.c					\
+						srcs/engine/events.c					\
+						srcs/engine/clean_mlx.c					\
 
 OBJS_DIR		:=		objs
 OBJS			:=		$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))

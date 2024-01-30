@@ -5,59 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 18:23:25 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/29 19:27:07 by aradix           ###   ########.fr       */
+/*   Created: 2024/01/30 15:22:43 by aradix            #+#    #+#             */
+/*   Updated: 2024/01/30 18:51:32 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-short	save_map_data(t_game *game, int data, size_t data_index)
+short	save_map_data(t_state *state, int data, size_t data_index)
 {
-	if (data == 'E')
+	if (data == 'P')
 	{
-		if (game->exit_position)
-			return (DUPLICATE_EXIT);
-		game->exit_position = data_index;
-	}
-	else if (data == 'P')
-	{
-		if (game->player_position)
+		if (state->player_position)
 			return (DUPLICATE_PLAYER);
-		game->player_position = data_index;
+		state->player_position = data_index;
+	}
+	else if (data == 'E')
+	{
+		if (state->exit_position)
+			return (DUPLICATE_EXIT);
+		state->exit_position = data_index;
 	}
 	else if (data == 'C')
-		++game->collectibles_count;
-	return (0);
+		++state->collectibles_count;
+	return (SUCCESS);
 }
 
-short	inner_line_checker(t_game *game, t_map *map, char *line)
+short	inner_line_checker(t_map *map, t_state *state, char *line)
 {
 	short	err;
-	size_t	i;
-	size_t	map_index;
+	char	*tmp;
 
-	i = 0;
-	map_index = (map->cols + 1) * map->rows;
-	if (line[i] != WALL)
+	if (*line != WALL)
 		return (MAP_NOT_CLOSED);
-	while (line[i] != '\n')
+	tmp = line;
+	while (*line && *line != '\n')
 	{
-		if (line[i] == COLLECTIBLE || line[i] == EXIT || line[i] == PLAYER)
+		if (*line == PLAYER || *line == COLLECTIBLE || *line == EXIT)
 		{
-			err = save_map_data(game, line[i], map_index + i);
+			err = save_map_data(state, *line, line - map->ptr);
 			if (err)
 				return (err);
 		}
-		else if (line[i] != WALL && line[i] != EMPTY)
+		else if (*line != WALL && *line != EMPTY)
 			return (INVALID_MAP_CHARACTER);
-		++i;
+		++line;
 	}
-	if (i != map->cols)
+	if ((size_t)(line - tmp) != map->cols)
 		return (INVALID_LINE_SIZE);
-	if (line[i - 1] != '1')
+	if (*(line - 1) != '1')
 		return (MAP_NOT_CLOSED);
-	return (0);
+	return (SUCCESS);
 }
 
 short	boundary_line_checker(t_map *map, char *line)
@@ -75,31 +73,29 @@ short	boundary_line_checker(t_map *map, char *line)
 		map->cols = i;
 	if (i < 3 || map->cols != i)
 		return (INVALID_LINE_SIZE);
-	return (0);
+	return (SUCCESS);
 }
 
-short	validity_checker(t_game *game, char *map)
+short	validity_checker(t_map *map, t_state *state, char *map_content)
 {
 	short	err;
 
-	if (!map)
+	if (!map_content)
 		return (CANNOT_READ_MAP_FILE);
-	game->map->map = map;
-	err = boundary_line_checker(game->map, map);
+	map->ptr = map_content;
+	err = boundary_line_checker(map, map_content);
 	if (err)
 		return (err);
-	map += game->map->cols + 1;
-	while (*(map + (game->map->cols + 1)) && *(map + (game->map->cols + 2)))
+	while (*(map_content + map->cols) && *(map_content + (map->cols + 1)))
 	{
-		++game->map->rows;
-		err = inner_line_checker(game, game->map, map);
+		++map->rows;
+		map_content += map->cols + 1;
+		err = inner_line_checker(map, state, map_content);
 		if (err)
 			return (err);
-		map += game->map->cols + 1;
 	}
-	err = boundary_line_checker(game->map, map);
+	err = boundary_line_checker(map, map_content);
 	if (err)
 		return (err);
-	game->map->rows += 2;
-	return (0);
+	return (SUCCESS);
 }
