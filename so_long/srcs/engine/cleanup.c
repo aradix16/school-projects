@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_loop.c                                        :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 14:13:03 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/31 15:06:47 by aradix           ###   ########.fr       */
+/*   Created: 2024/01/31 13:47:19 by aradix            #+#    #+#             */
+/*   Updated: 2024/01/31 14:45:49 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	stop_game_loop(t_game *game)
+short	clean_mlx(t_mlx *mlx, short state)
 {
-	mlx_loop_end(game->mlx->ptr);
-	return (SUCCESS);
-}
-
-void	start_game_loop(t_game *game, t_mlx *mlx)
-{
-	mlx_hook(mlx->window->ptr, 2, (1L << 0), key_press_event, game);
-	mlx_loop_hook(mlx->ptr, update_event, game);
-	mlx_hook(mlx->window->ptr, 17, (1L << 17), stop_game_loop, game);
-	mlx_loop(mlx->ptr);
+	if (state == SUCCESS || state > MLX_WINDOW_FAILED)
+		mlx_destroy_window(mlx->ptr, mlx->window->ptr);
+	if (state == 0 || state > MLX_IMAGE_FAILED)
+		mlx_destroy_image(mlx->ptr, mlx->frame->image);
+	if (state == 0 || state > MLX_INIT_FAILED)
+	{
+		mlx_destroy_display(mlx->ptr);
+		free(mlx->ptr);
+	}
+	return (state);
 }

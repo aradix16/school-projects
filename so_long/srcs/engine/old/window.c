@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 13:39:00 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/31 13:53:54 by aradix           ###   ########.fr       */
+/*   Created: 2024/01/30 19:12:33 by aradix            #+#    #+#             */
+/*   Updated: 2024/01/30 21:54:10 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	get_window_size(t_mlx *mlx, t_window *window, t_map *map)
+void	set_window_size(t_window *window, t_mlx *mlx, t_map *map)
 {
 	int	width;
 	int	height;
@@ -26,11 +26,13 @@ void	get_window_size(t_mlx *mlx, t_window *window, t_map *map)
 	window->height = height;
 }
 
-bool	create_window(t_mlx *mlx, t_window *window, t_map *map)
+bool	create_window(t_window *window, t_mlx *mlx, t_map *map)
 {
 	mlx->window = window;
-	get_window_size(mlx, window, map);
+	set_window_size(window, mlx, map);
 	window->ptr = mlx_new_window(mlx->ptr, window->width, window->height,
 			"so_long");
-	return (window->ptr);
+	if (!window->ptr)
+		return (false);
+	return (true);
 }

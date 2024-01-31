@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:37:22 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/30 22:44:20 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/31 13:58:58 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define UNPLAYABLE_MAP 13
 # define MLX_INIT_FAILED 14
 # define MLX_WINDOW_FAILED 15
+# define MLX_IMAGE_FAILED 16
 
 # define WALL '1'
 # define EMPTY '0'

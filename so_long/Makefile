@@ -20,13 +20,13 @@ SRCS			:=		srcs/so_long.c							\
 						srcs/parsing/map/extension_checker.c	\
 						srcs/parsing/map/validity_checker.c		\
 						srcs/parsing/map/playability_checker.c	\
-						srcs/engine/start.c						\
+						srcs/engine/start_engine.c				\
 						srcs/engine/window.c					\
+						srcs/engine/render.c					\
 						srcs/engine/game_loop.c					\
 						srcs/engine/events.c					\
-						srcs/engine/clean_mlx.c					\
-						srcs/engine/move_player.c				\
-						srcs/engine/render.c					\
+						srcs/engine/player.c					\
+						srcs/engine/cleanup.c					\
 
 OBJS_DIR		:=		objs
 OBJS			:=		$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
