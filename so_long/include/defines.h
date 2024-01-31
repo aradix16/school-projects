@@ -6,13 +6,14 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:37:22 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/31 13:58:58 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/31 18:19:21 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
+/* RETURN STATUS */
 # define SUCCESS 0
 # define MALLOC_ERROR 1
 # define INVALID_ARG_NUMBERS 2
@@ -28,9 +29,11 @@
 # define NO_PLAYER_FOUND 12
 # define UNPLAYABLE_MAP 13
 # define MLX_INIT_FAILED 14
-# define MLX_WINDOW_FAILED 15
-# define MLX_IMAGE_FAILED 16
+# define LOAD_TEXTURES_FAILED 15
+# define MLX_WINDOW_FAILED 16
+# define MLX_IMAGE_FAILED 17
 
+/* MAP ITEMS */
 # define WALL '1'
 # define EMPTY '0'
 # define PLAYER 'P'
@@ -46,6 +49,11 @@
 # define DOWN 115
 # define LEFT 97
 # define RIGHT 100
+
+/* TEXTURES */
+# define EMPTY_TEXTURE 0
+# define WALL_TEXTURE 1
+# define EXIT_TEXTURE 2
 
 /* TO REMOVE */
 # define GREEN 65280;

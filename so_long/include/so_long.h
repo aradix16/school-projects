@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:33:29 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/30 15:21:26 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/31 17:09:17 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define SO_LONG_H
 
 # include <stdio.h> // remove
+# include <string.h> // remove
+
 # include <stdbool.h>
 
 # include "libft.h"

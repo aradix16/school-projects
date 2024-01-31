@@ -21,6 +21,7 @@ SRCS			:=		srcs/so_long.c							\
 						srcs/parsing/map/validity_checker.c		\
 						srcs/parsing/map/playability_checker.c	\
 						srcs/engine/start_engine.c				\
+						srcs/engine/textures.c					\
 						srcs/engine/window.c					\
 						srcs/engine/render.c					\
 						srcs/engine/game_loop.c					\

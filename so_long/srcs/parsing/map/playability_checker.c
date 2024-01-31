@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:54:19 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/30 18:51:02 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/31 16:24:26 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ bool	explore(t_state *state, char *map, size_t i, const size_t cols)
 	if (map[i] == COLLECTIBLE)
 		--state->collectibles_count;
 	else if (map[i] == EXIT)
+	{
 		state->exit_position = 0;
+		return (false);
+	}
 	map[i] = WALL;
 	if (explore(state, map, i + 1, cols)
 		|| explore(state, map, i - 1, cols)

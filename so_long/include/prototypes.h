@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:36:41 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/31 15:16:40 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/31 17:43:27 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,18 @@ short	playability_checker(t_map *map, t_state state);
 
 /* GAME ENGINE */
 short	start_engine(t_game *game);
+bool	load_textures(t_mlx *mlx, t_texture *texture);
 bool	create_window(t_mlx *mlx, t_window *window, t_map *map);
 bool	new_frame(t_game *game, t_mlx *mlx, t_frame *frame, t_window *window);
-void	render(t_game *game, t_frame *frame);
+void	draw_frame(t_game *game, t_frame *frame);
+int		render_frame(t_mlx *mlx);
 void	start_game_loop(t_game *game, t_mlx *mlx);
 int		stop_game_loop(t_game *game);
 int		key_press_event(int key, t_game *game);
 int		update_event(t_game *game);
-int		update_player_position(t_game *game, size_t direction);
+void	update_player_position(t_map *map, t_state *state, size_t direction);
+bool	check_player_position(t_map *map, t_state *state);
+void	clean_textures(t_mlx *mlx, t_texture *texture, int i);
 short	clean_mlx(t_mlx *mlx, short state);
 
 #endif

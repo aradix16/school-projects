@@ -6,16 +6,23 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:37:47 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/31 14:08:26 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/31 17:37:35 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct s_textures
+typedef struct s_texture
 {
-}				t_textures;
+	void		*image;
+	char		*data;
+	int			width;
+	int			height;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
+}				t_texture;
 
 typedef struct s_frame
 {
@@ -38,7 +45,7 @@ typedef struct s_mlx
 	void		*ptr;
 	t_window	*window;
 	t_frame		*frame;
-	t_textures	*textures;
+	t_texture	*texture;
 }				t_mlx;
 
 typedef struct s_state

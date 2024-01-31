@@ -6,16 +6,48 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:57:09 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/31 14:29:36 by aradix           ###   ########.fr       */
+/*   Updated: 2024/01/31 19:28:47 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	render(t_game *game, t_frame *frame)
+int	render_frame(t_mlx *mlx)
 {
-	(void)game;
-	(void)frame;
+	mlx_put_image_to_window(mlx->ptr, mlx->window->ptr, mlx->frame->image, 0,
+		0);
+	return (0);
+}
+
+void	draw_frame(t_game *game, t_frame *frame)
+{
+	size_t	i;
+	int		j;
+	int		x;
+
+	i = 0;
+	while (game->map->ptr[i])
+	{
+		if (game->map->ptr[i] == WALL)
+		{
+			j = 0;
+			x = 0;
+			int frame_width = game->mlx->window->width;
+			while (j < (TILE_SIZE * TILE_SIZE))
+			{
+				frame->data[x] = game->mlx->texture[0].data[j];
+				x++;
+				if (x % TILE_SIZE == 0)
+				{
+					x += (frame_width - TILE_SIZE);
+				}
+				j++;
+			}
+			return ;
+		}
+		return ;
+		i++;
+	}
 }
 
 bool	new_frame(t_game *game, t_mlx *mlx, t_frame *frame, t_window *window)
@@ -31,6 +63,6 @@ bool	new_frame(t_game *game, t_mlx *mlx, t_frame *frame, t_window *window)
 		mlx_destroy_image(mlx->ptr, frame->image);
 		return (false);
 	}
-	render(game, frame);
+	draw_frame(game, frame);
 	return (true);
 }
