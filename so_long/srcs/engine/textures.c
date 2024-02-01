@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:47 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/01 15:29:04 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/01 15:44:29 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,24 @@ void	init_textures(t_texture *texture, int i)
 		texture[i].image = NULL;
 }
 
-bool	load_textures(t_mlx *mlx, t_texture **texture)
+bool	load_textures(t_mlx *mlx, t_texture *texture)
 {
 	mlx->texture = texture;
 	init_textures(texture, NB_TEXTURES);
 	if (!get_texture_image(mlx, &texture[0], "empty.xpm")
 		|| !get_texture_data(&texture[0]))
 		return (false);
-	if (!get_texture_image(mlx, texture[1], "wall.xpm")
-		|| !get_texture_data(&texture[0]))
+	if (!get_texture_image(mlx, &texture[1], "wall.xpm")
+		|| !get_texture_data(&texture[1]))
+		return (false);
+	if (!get_texture_image(mlx, &texture[2], "player.xpm")
+		|| !get_texture_data(&texture[2]))
+		return (false);
+	if (!get_texture_image(mlx, &texture[3], "collectible.xpm")
+		|| !get_texture_data(&texture[3]))
+		return (false);
+	if (!get_texture_image(mlx, &texture[4], "exit.xpm")
+		|| !get_texture_data(&texture[4]))
 		return (false);
 	return (true);
 }

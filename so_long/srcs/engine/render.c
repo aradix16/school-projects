@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:57:09 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/01 15:22:43 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/01 15:45:38 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,18 @@ void	draw_frame(t_game *game, t_frame *frame)
 			i++;
 			continue ;
 		}
-		pos = (row * ((game->map->cols * TILE_SIZE) * TILE_SIZE)) + (col * TILE_SIZE);
+		pos = (row * ((game->map->cols * TILE_SIZE) * TILE_SIZE)) + (col
+				* TILE_SIZE);
 		if (game->map->ptr[i] == EMPTY)
 			draw_square(game, pos, &game->mlx->texture[0]);
-		if (game->map->ptr[i] == WALL)
+		else if (game->map->ptr[i] == WALL)
 			draw_square(game, pos, &game->mlx->texture[1]);
+		else if (i == game->state->player_position)
+			draw_square(game, pos, &game->mlx->texture[2]);
+		else if (game->map->ptr[i] == COLLECTIBLE)
+			draw_square(game, pos, &game->mlx->texture[3]);
+		else if (i == game->state->exit_position)
+			draw_square(game, pos, &game->mlx->texture[4]);
 		col++;
 		i++;
 	}

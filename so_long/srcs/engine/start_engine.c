@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:35:35 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/01 15:25:43 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/01 15:35:18 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ short	start_engine(t_game *game)
 	mlx.ptr = mlx_init();
 	if (!mlx.ptr)
 		return (MLX_INIT_FAILED);
-	if (!load_textures(&mlx, &texture))
+	if (!load_textures(&mlx, texture))
 		return (clean_mlx(&mlx, LOAD_TEXTURES_FAILED));
 	if (!create_window(&mlx, &window, game->map))
 		return (clean_mlx(&mlx, MLX_WINDOW_FAILED));

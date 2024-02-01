@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:56:37 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/01 14:07:47 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/01 15:37:56 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	key_press_event(int key, t_game *game)
 		update_player_position(game->map, game->state, 1);
 	if (check_player_position(game->map, game->state))
 		return (stop_game_loop(game));
-	/* draw_frame(game, game->mlx->frame); */
+	draw_frame(game, game->mlx->frame);
 	render_frame(game->mlx);
 	return (0);
 }

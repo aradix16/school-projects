@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:54:19 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/31 16:24:26 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/01 16:02:09 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 bool	explore(t_state *state, char *map, size_t i, const size_t cols)
 {
-	if (state->exit_position == 0 && state->collectibles_count == 0)
+	if ((map[i] == EXIT || state->exit_position == 0)
+			&& state->collectibles_count == 0)
 		return (true);
 	if (map[i] == WALL)
 		return (false);
@@ -50,6 +51,7 @@ short	playability_checker(t_map *map, t_state state)
 	if (!explore(&state, cpy, state.player_position, map->cols))
 	{
 		free(cpy);
+		printf("UNPLAYABLE");
 		return (UNPLAYABLE_MAP);
 	}
 	free(cpy);
