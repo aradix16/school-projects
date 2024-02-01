@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:22:43 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/30 18:51:32 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/01 14:03:12 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ short	validity_checker(t_map *map, t_state *state, char *map_content)
 	err = boundary_line_checker(map, map_content);
 	if (err)
 		return (err);
+	map->rows = 1;
 	while (*(map_content + map->cols) && *(map_content + (map->cols + 1)))
 	{
 		++map->rows;

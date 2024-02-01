@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:57:09 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/31 19:28:47 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/01 15:22:43 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,62 @@ int	render_frame(t_mlx *mlx)
 	return (0);
 }
 
-void	draw_frame(t_game *game, t_frame *frame)
+void	draw_line(t_mlx *mlx, size_t start, size_t end, t_texture *texture)
 {
-	size_t	i;
-	int		j;
-	int		x;
+	int	i;
 
 	i = 0;
-	while (game->map->ptr[i])
+	(void)texture;
+	while (start < end)
 	{
-		if (game->map->ptr[i] == WALL)
-		{
-			j = 0;
-			x = 0;
-			int frame_width = game->mlx->window->width;
-			while (j < (TILE_SIZE * TILE_SIZE))
-			{
-				frame->data[x] = game->mlx->texture[0].data[j];
-				x++;
-				if (x % TILE_SIZE == 0)
-				{
-					x += (frame_width - TILE_SIZE);
-				}
-				j++;
-			}
-			return ;
-		}
-		return ;
+		((int *)mlx->frame->data)[start] = ((int *)texture->data)[i];
+		i++;
+		start++;
+	}
+}
+
+void	draw_square(t_game *game, int pos, t_texture *texture)
+{
+	int	i;
+
+	i = 0;
+	while (i < TILE_SIZE)
+	{
+		draw_line(game->mlx, pos, pos + TILE_SIZE, texture);
+		pos += game->mlx->window->width;
 		i++;
 	}
 }
 
+void	draw_frame(t_game *game, t_frame *frame)
+{
+	size_t	i;
+	size_t	col;
+	size_t	row;
+	size_t	pos;
+
+	i = 0;
+	col = 0;
+	row = 0;
+	while (game->map->ptr[i])
+	{
+		if (game->map->ptr[i] == '\n')
+		{
+			row++;
+			col = 0;
+			i++;
+			continue ;
+		}
+		pos = (row * ((game->map->cols * TILE_SIZE) * TILE_SIZE)) + (col * TILE_SIZE);
+		if (game->map->ptr[i] == EMPTY)
+			draw_square(game, pos, &game->mlx->texture[0]);
+		if (game->map->ptr[i] == WALL)
+			draw_square(game, pos, &game->mlx->texture[1]);
+		col++;
+		i++;
+	}
+	(void)frame;
+}
 bool	new_frame(t_game *game, t_mlx *mlx, t_frame *frame, t_window *window)
 {
 	mlx->frame = frame;
