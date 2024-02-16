@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:47 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/01 15:44:29 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/15 15:21:20 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	get_texture_image(t_mlx *mlx, t_texture *texture, char *texture_path)
 
 void	init_textures(t_texture *texture, int i)
 {
-	while (--i >= 0)
+	while (--i > 0)
 		texture[i].image = NULL;
 }
 
@@ -36,20 +36,48 @@ bool	load_textures(t_mlx *mlx, t_texture *texture)
 {
 	mlx->texture = texture;
 	init_textures(texture, NB_TEXTURES);
-	if (!get_texture_image(mlx, &texture[0], "empty.xpm")
-		|| !get_texture_data(&texture[0]))
+	if (!get_texture_image(mlx, &texture[GRASS0_ID], GRASS0)
+		|| !get_texture_data(&texture[GRASS0_ID]))
 		return (false);
-	if (!get_texture_image(mlx, &texture[1], "wall.xpm")
-		|| !get_texture_data(&texture[1]))
+	if (!get_texture_image(mlx, &texture[GRASS1_ID], GRASS1)
+		|| !get_texture_data(&texture[GRASS1_ID]))
 		return (false);
-	if (!get_texture_image(mlx, &texture[2], "player.xpm")
-		|| !get_texture_data(&texture[2]))
+	if (!get_texture_image(mlx, &texture[GRASS2_ID], GRASS2)
+		|| !get_texture_data(&texture[GRASS2_ID]))
 		return (false);
-	if (!get_texture_image(mlx, &texture[3], "collectible.xpm")
-		|| !get_texture_data(&texture[3]))
+	if (!get_texture_image(mlx, &texture[GRASS3_ID], GRASS3)
+		|| !get_texture_data(&texture[GRASS3_ID]))
 		return (false);
-	if (!get_texture_image(mlx, &texture[4], "exit.xpm")
-		|| !get_texture_data(&texture[4]))
+	if (!get_texture_image(mlx, &texture[GRASS4_ID], GRASS4)
+		|| !get_texture_data(&texture[GRASS4_ID]))
+		return (false);
+	if (!get_texture_image(mlx, &texture[GRASS5_ID], GRASS5)
+		|| !get_texture_data(&texture[GRASS5_ID]))
+		return (false);
+	if (!get_texture_image(mlx, &texture[OBSTACLE0_ID], OBSTACLE0)
+		|| !get_texture_data(&texture[OBSTACLE0_ID]))
+		return (false);
+	if (!get_texture_image(mlx, &texture[OBSTACLE1_ID], OBSTACLE1)
+		|| !get_texture_data(&texture[OBSTACLE1_ID]))
+		return (false);
+	if (!get_texture_image(mlx, &texture[OBSTACLE2_ID], OBSTACLE2)
+		|| !get_texture_data(&texture[OBSTACLE2_ID]))
+		return (false);
+	if (!get_texture_image(mlx, &texture[FLOWER0_ID], FLOWER0)
+		|| !get_texture_data(&texture[FLOWER0_ID]))
+		return (false);
+	if (!get_texture_image(mlx, &texture[FLOWER0_ID], FLOWER0)
+		|| !get_texture_data(&texture[FLOWER0_ID]))
+		return (false);
+	if (!get_texture_image(mlx, &texture[FLOWER1_ID], FLOWER1)
+		|| !get_texture_data(&texture[FLOWER1_ID]))
+		return (false);
+	if (!get_texture_image(mlx, &texture[FLOWER2_ID], FLOWER2)
+		|| !get_texture_data(&texture[FLOWER2_ID]))
+		return (false);
+
+	if (!get_texture_image(mlx, &texture[PLAYER0_ID], PLAYER0)
+		|| !get_texture_data(&texture[PLAYER0_ID]))
 		return (false);
 	return (true);
 }

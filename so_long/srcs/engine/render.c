@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:57:09 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/01 15:45:38 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/15 17:44:44 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,69 +19,100 @@ int	render_frame(t_mlx *mlx)
 	return (0);
 }
 
-void	draw_line(t_mlx *mlx, size_t start, size_t end, t_texture *texture)
+void	draw_tile(t_game *game, size_t x, size_t y, t_texture *texture)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
+	size_t	pos;
+	int		pxl_color;
 
 	i = 0;
-	(void)texture;
-	while (start < end)
+	pos = ((x * TILE_SIZE) * game->map->width + y) * TILE_SIZE;
+	while (i < TILE_SIZE)
 	{
-		((int *)mlx->frame->data)[start] = ((int *)texture->data)[i];
+		j = 0;
+		while (j < TILE_SIZE)
+		{
+			pxl_color = ((int *)texture->data)[(i * TILE_SIZE) + j];
+			if (pxl_color != 0)
+				((int *)game->mlx->frame->data)[pos] = pxl_color;
+			j++;
+			pos++;
+		}
+		pos += game->mlx->window->width - TILE_SIZE;
 		i++;
-		start++;
 	}
 }
 
-void	draw_square(t_game *game, int pos, t_texture *texture)
+void	draw_tile_player(t_game *game, float x, float y, t_texture *texture)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
+	int		pos;
+	int		pxl_color;
 
 	i = 0;
+	pos = ((x * TILE_SIZE) * game->map->width + y) * TILE_SIZE;
 	while (i < TILE_SIZE)
 	{
-		draw_line(game->mlx, pos, pos + TILE_SIZE, texture);
-		pos += game->mlx->window->width;
+		j = 0;
+		while (j < TILE_SIZE)
+		{
+			pxl_color = ((int *)texture->data)[(i * TILE_SIZE) + j];
+			if (pxl_color != 0)
+				((int *)game->mlx->frame->data)[pos] = pxl_color;
+			j++;
+			pos++;
+		}
+		pos += game->mlx->window->width - TILE_SIZE;
 		i++;
 	}
 }
 
 void	draw_frame(t_game *game, t_frame *frame)
 {
-	size_t	i;
-	size_t	col;
-	size_t	row;
-	size_t	pos;
+	size_t			x;
+	size_t			y;
+	int				texture_index;
+	unsigned int	seed;
 
-	i = 0;
-	col = 0;
-	row = 0;
-	while (game->map->ptr[i])
+	seed = 0;
+	x = 0;
+	while (game->map->content[x])
 	{
-		if (game->map->ptr[i] == '\n')
+		y = 0;
+		while (game->map->content[x][y])
 		{
-			row++;
-			col = 0;
-			i++;
-			continue ;
+			texture_index = ft_rand(&seed) % 6;
+			draw_tile(game, x, y, &game->mlx->texture[0]);
+			if (game->map->content[x][y] == WALL)
+			{
+				if (x == 0 || x == (game->map->height - 1))
+					texture_index = (ft_rand(&seed) % 3) + 6;
+				else
+					texture_index = (ft_rand(&seed) % 2) + 6;
+				draw_tile(game, x, y, &game->mlx->texture[texture_index]);
+			}
+			else if (game->map->content[x][y] == COLLECTIBLE)
+			{
+				texture_index = (ft_rand(&seed) % 3) + 9;
+				draw_tile(game, x, y, &game->mlx->texture[texture_index]);
+			}
+			y++;
 		}
-		pos = (row * ((game->map->cols * TILE_SIZE) * TILE_SIZE)) + (col
-				* TILE_SIZE);
-		if (game->map->ptr[i] == EMPTY)
-			draw_square(game, pos, &game->mlx->texture[0]);
-		else if (game->map->ptr[i] == WALL)
-			draw_square(game, pos, &game->mlx->texture[1]);
-		else if (i == game->state->player_position)
-			draw_square(game, pos, &game->mlx->texture[2]);
-		else if (game->map->ptr[i] == COLLECTIBLE)
-			draw_square(game, pos, &game->mlx->texture[3]);
-		else if (i == game->state->exit_position)
-			draw_square(game, pos, &game->mlx->texture[4]);
-		col++;
-		i++;
+		x++;
 	}
 	(void)frame;
+
+	// render player
+	float xx = game->state->player.x;
+	float yy = game->state->player.y;
+
+	/* printf("%c\n", game->map->content[xx][yy]); */
+	draw_tile_player(game, xx, yy, &game->mlx->texture[PLAYER0_ID]);
+	
 }
+ 
 bool	new_frame(t_game *game, t_mlx *mlx, t_frame *frame, t_window *window)
 {
 	mlx->frame = frame;

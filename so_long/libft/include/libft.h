@@ -1,37 +1,46 @@
-/* ************************************************************************** */
+
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 11:04:23 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/26 12:45:08 by aradix           ###   ########.fr       */
+/*   Created: 2024/02/06 15:41:13 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/15 12:17:56 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <fcntl.h>
-# include <stdarg.h>
 # include <stdbool.h>
-# include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
 
-size_t	ft_strlen(const char *s, int c);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-void	*ft_memncpy(void *dst, void *src, size_t n);
-char	*ft_read_file(const char *filename);
-void	ft_free(const char *format, ...);
-char	*ft_strchr(const char *s, int c);
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
-char	*ft_strdup(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-void	*ft_memdup(void	*src, size_t n);
+/* STRING */
+size_t				ft_strlen(const char *s);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
+ssize_t				ft_strchr(const char *s, int c);
+void				*ft_memset(void *s, int c, size_t n);
+char				*ft_strnew(size_t n, int c);
+void				ft_mtrxfree(char **mtrx);
 
-void	*ft_calloc(size_t nmemb, size_t size);
-void	*ft_memset(void *s, int c, size_t n);
+/* STDIO */
+ssize_t				ft_puts(const char *s);
+
+/* LIST */
+t_list				*ft_lstnew(void *content);
+void				ft_lstadd_back(t_list **lst, t_list *new);
+t_list				*ft_lstlast(t_list *lst);
+void				ft_lstfree(t_list *lst);
+
+/* STDLIB */
+unsigned int		ft_rand(unsigned int *seed);
 
 #endif

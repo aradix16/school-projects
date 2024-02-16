@@ -5,17 +5,23 @@ CLAGS			:=	-Wall -Wextra -Werror
 
 INCLUDE			:=	include
 
-SRCS			:=	ft_memncpy.c	\
-					ft_strlen.c		\
-					ft_strncmp.c 	\
-					ft_read_file.c	\
-					ft_free.c		\
-					ft_strchr.c		\
-					ft_strdup.c		\
-					ft_strlcpy.c	\
-					ft_memdup.c		\
-					ft_calloc.c		\
-					ft_memset.c		\
+STRING			:=	string/ft_strlen.c		\
+					string/ft_strncmp.c		\
+					string/ft_strchr.c		\
+					string/ft_memset.c		\
+					string/ft_strnew.c		\
+					string/ft_mtrxfree.c	\
+
+STDIO			:=	stdio/ft_puts.c			\
+
+LIST			:=	list/ft_lstnew.c		\
+					list/ft_lstadd_back.c	\
+					list/ft_lstlast.c		\
+					list/ft_lstfree.c		\
+
+STDLIB			:=	stdlib/ft_rand.c		\
+
+SRCS			:= $(STRING) $(STDIO) $(LIST) $(STDLIB)
 
 OBJS_DIR		:=	objs
 OBJS			:=	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))

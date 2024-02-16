@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 19:03:02 by aradix            #+#    #+#             */
-/*   Updated: 2024/01/30 20:57:54 by aradix           ###   ########.fr       */
+/*   Created: 2024/02/08 18:41:47 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/15 17:20:03 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	init_struct(t_game *game, t_map *map, t_state *state)
 {
-	map->ptr = NULL;
-	map->cols = 0;
-	map->rows = 0;
-	state->player_position = 0;
-	state->exit_position = 0;
-	state->collectibles_count = 0;
+	map->content = NULL;
+	map->width = 0;
+	map->height = 0;
 	game->map = map;
+	state->player.x = 0;
+	state->player.y = 0;
+	state->exit = false;
+	state->collectibles_count = 0;
 	game->state = state;
+	*game->seed = 0;
 }
 
 int	main(int ac, char **av)
@@ -34,10 +36,10 @@ int	main(int ac, char **av)
 	init_struct(&game, &map, &state);
 	err = parsing(&game, ac, av);
 	if (err)
-		return (error_handler(&game, err));
+		return (print_error(err));
 	err = start_engine(&game);
 	if (err)
-		return (error_handler(&game, err));
-	free(map.ptr);
+		return (ft_mtrxfree(map.content), print_error(err));
+	ft_mtrxfree(map.content);
 	return (SUCCESS);
 }

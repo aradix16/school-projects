@@ -15,19 +15,20 @@ MLX				:=		$(MLX_PATH)/libmlx.a
 INCLUDE			:=		include
 
 SRCS			:=		srcs/so_long.c							\
-						srcs/error_handler.c					\
+						srcs/error/print_error.c				\
 						srcs/parsing/parsing.c					\
-						srcs/parsing/map/extension_checker.c	\
-						srcs/parsing/map/validity_checker.c		\
-						srcs/parsing/map/playability_checker.c	\
-						srcs/engine/start_engine.c				\
+						srcs/parsing/check_extension.c			\
+						srcs/parsing/map/read_and_store.c		\
+						srcs/parsing/map/check_validity.c		\
+						srcs/parsing/map/check_playability.c	\
+						srcs/engine/start.c						\
+						srcs/engine/cleanup.c					\
 						srcs/engine/textures.c					\
 						srcs/engine/window.c					\
 						srcs/engine/render.c					\
 						srcs/engine/game_loop.c					\
 						srcs/engine/events.c					\
 						srcs/engine/player.c					\
-						srcs/engine/cleanup.c					\
 
 OBJS_DIR		:=		objs
 OBJS			:=		$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
@@ -57,3 +58,4 @@ fclean: clean
 	make fclean -C $(LIBFT_PATH)
 
 re: fclean all
+

@@ -6,35 +6,25 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:11:50 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/01 16:03:35 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/15 16:20:02 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	check_player_position(t_map *map, t_state *state)
-{
-	if (state->player_position == state->exit_position
-		&& state->collectibles_count == 0)
-		return (true);
-	if (map->ptr[state->player_position] == COLLECTIBLE)
-		state->collectibles_count--;
-	/* debug only */
-	map->ptr[state->player_position] = PLAYER;
-	printf("%s\n", map->ptr);
-	/* --- */
-	return (false);
-}
+/* IF == WALL */
+/* 	round si a lorigine le player = 1.00 et qu'il monte  */
+/* 	et que on est a 0.80 (donc 0 si on round), mettre le player a 1.0 */
 
-void	update_player_position(t_map *map, t_state *state, size_t direction)
+void	update_player_position(t_map *map, t_state *state, t_pos updated_pos)
 {
-	size_t	new_position;
-
-	new_position = state->player_position + direction;
-	if (map->ptr[new_position] == WALL)
+	updated_pos.x += state->player.x;
+	updated_pos.y += state->player.y;
+	if (map->content[(size_t)updated_pos.x][(size_t)updated_pos.y] == WALL)
 		return ;
-	if (new_position == state->exit_position && state->collectibles_count != 0)
+	if (map->content[(size_t)updated_pos.x][(size_t)updated_pos.y] == EXIT)
 		return ;
-	map->ptr[state->player_position] = EMPTY;
-	state->player_position = new_position;
+	map->content[(size_t)state->player.x][(size_t)state->player.y] = EMPTY;
+	map->content[(size_t)updated_pos.x][(size_t)updated_pos.y] = PLAYER;
+	state->player = updated_pos;
 }
