@@ -11,6 +11,8 @@ STRING			:=	string/ft_strlen.c		\
 					string/ft_memset.c		\
 					string/ft_strnew.c		\
 					string/ft_mtrxfree.c	\
+					string/ft_strjoin.c		\
+					string/ft_strlcpy.c		\
 
 STDIO			:=	stdio/ft_puts.c			\
 
@@ -20,8 +22,13 @@ LIST			:=	list/ft_lstnew.c		\
 					list/ft_lstfree.c		\
 
 STDLIB			:=	stdlib/ft_rand.c		\
+					stdlib/ft_atoi.c		\
+					stdlib/ft_itoa.c		\
 
-SRCS			:= $(STRING) $(STDIO) $(LIST) $(STDLIB)
+MATH			:=	math/ft_min.c			\
+					math/ft_max.c			\
+
+SRCS			:= $(STRING) $(STDIO) $(LIST) $(STDLIB) $(MATH)
 
 OBJS_DIR		:=	objs
 OBJS			:=	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))

@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 16:10:31 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/26 16:50:14 by aradix           ###   ########.fr       */
+/*   Created: 2023/11/15 09:00:35 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/26 12:51:05 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	print_error(short err)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	ft_puts("Error\n");
-	if (err == INVALID_ARG_NUMBER)
-		ft_puts("todo\n");
-	else if (err == INVALID_MAP_EXTENSION)
-		ft_puts("todo\n");
-	else if (err == CANNOT_OPEN_MAP)
-		ft_puts("todo\n");
-	else if (err == READ_ERROR)
-		ft_puts("todo\n");
-	else if (err == INVALID_MAP)
-		ft_puts("todo\n");
-	else if (err == CANNOT_READ_MAP)
-		ft_puts("todo\n");
-	return (err);
+	char	*s3;
+	size_t	s1_len;
+	size_t	s2_len;
+
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	s3 = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (s3 == NULL)
+		return (NULL);
+	ft_strlcpy(s3, s1, s1_len + 1);
+	ft_strlcpy(s3 + s1_len, s2, s2_len + 1);
+	return (s3);
 }

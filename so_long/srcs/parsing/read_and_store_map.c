@@ -1,47 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_and_store.c                                   :+:      :+:    :+:   */
+/*   read_and_store_map.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 15:26:47 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/10 20:55:36 by aradix           ###   ########.fr       */
+/*   Created: 2024/02/26 16:20:23 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/26 17:08:45 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-short	get_map_width(t_map *map, int fd)
+short	lst_to_array(t_map *map, t_list *head)
 {
-	char	c;
-	short	read_ret;
+	size_t	i;
+	t_list	*tmp;
 
-	while (1)
+	i = 0;
+	map->content = (char **)malloc(sizeof(char *) * (map->size.y + 1));
+	if (!map->content)
+		return (MALLOC_ERROR);
+	map->content[map->size.y] = NULL;
+	while (head)
 	{
-		read_ret = read(fd, &c, 1);
-		if (read_ret == -1)
-			return (READ_ERROR);
-		if (read_ret == 0)
-			return (INVALID_MAP_CONTENT);
-		if (c == '\n')
-			return (SUCCESS);
-		if (c != '1')
-			return (INVALID_MAP_CONTENT);
-		++map->width;
+		map->content[i] = head->content;
+		tmp = head;
+		head = head->next;
+		free(tmp);
+		++i;
 	}
+	return (SUCCESS);
 }
 
-short	get_line(int fd, char **line, unsigned int width)
+short	get_line(int fd, char **line, int width)
 {
-	ssize_t	read_ret;
+	int	read_ret;
 
 	*line = malloc(sizeof(char) * (width + 1));
 	if (!(*line))
 		return (MALLOC_ERROR);
 	read_ret = read(fd, *line, width + 1);
 	if (read_ret == -1)
-		return (CANNOT_READ_MAP);
+		return (free(*line), CANNOT_READ_MAP);
 	if (read_ret == 0)
 	{
 		free(*line);
@@ -72,33 +73,32 @@ short	file_to_lst(t_map *map, int fd, t_list **head_ptr, char *line)
 		else
 			last_node->next = node;
 		last_node = node;
-		err = get_line(fd, &line, map->width);
+		err = get_line(fd, &line, map->size.x);
 		if (err)
-			return (MALLOC_ERROR);
-		++map->height;
+			return (err);
+		++map->size.y;
 	}
 	return (SUCCESS);
 }
 
-short	lst_to_array(t_map *map, t_list *head)
+short	get_map_width(t_map *map, int fd)
 {
-	size_t	i;
-	t_list	*tmp;
+	char	c;
+	short	read_ret;
 
-	i = 0;
-	map->content = (char **)malloc(sizeof(char *) * (map->height + 1));
-	if (!map->content)
-		return (MALLOC_ERROR);
-	map->content[map->height] = NULL;
-	while (head)
+	while (1)
 	{
-		map->content[i] = head->content;
-		tmp = head;
-		head = head->next;
-		free(tmp);
-		++i;
+		read_ret = read(fd, &c, 1);
+		if (read_ret == -1)
+			return (READ_ERROR);
+		if (read_ret == 0)
+			return (INVALID_MAP);
+		if (c == '\n')
+			return (SUCCESS);
+		if (c != '1')
+			return (INVALID_MAP);
+		++map->size.x;
 	}
-	return (SUCCESS);
 }
 
 short	read_and_store_map(t_map *map, int fd)
@@ -112,7 +112,7 @@ short	read_and_store_map(t_map *map, int fd)
 	if (err)
 		return (err);
 	head = NULL;
-	err = file_to_lst(map, fd, &head, ft_strnew(map->width, '1'));
+	err = file_to_lst(map, fd, &head, ft_strnew(map->size.x, '1'));
 	if (err)
 		return (ft_lstfree(head), err);
 	err = lst_to_array(map, head);

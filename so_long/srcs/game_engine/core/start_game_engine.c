@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start.c                                            :+:      :+:    :+:   */
+/*   start_game_engine.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 21:28:33 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/15 17:12:03 by aradix           ###   ########.fr       */
+/*   Created: 2024/02/25 15:22:02 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/26 19:56:05 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-short	start_engine(t_game *game)
+short	start_game_engine(t_game *game)
 {
 	t_mlx		mlx;
-	t_texture	texture[NB_TEXTURES];
+	t_textures	textures;
 	t_window	window;
-	t_frame		frame;
+	t_mlx_img	frame;
 
-	game->mlx = &mlx;
-	mlx.ptr = mlx_init();
-	if (!mlx.ptr)
+	if (!initialize_display_connection(game, &mlx))
 		return (MLX_INIT_FAILED);
-	if (!load_textures(&mlx, texture))
+	if (!load_textures(&mlx, &textures))
 		return (clean_mlx(&mlx, LOAD_TEXTURES_FAILED));
-	if (!create_window(&mlx, &window, game->map))
+	if (!create_new_window(&mlx, &window, game->map))
 		return (clean_mlx(&mlx, MLX_WINDOW_FAILED));
-	if (!new_frame(game, &mlx, &frame, &window))
+	if (!create_new_frame(&mlx, &frame, &window))
 		return (clean_mlx(&mlx, MLX_IMAGE_FAILED));
-	start_game_loop(game);
+	start_game_loop(game, &mlx);
 	return (clean_mlx(&mlx, SUCCESS));
 }

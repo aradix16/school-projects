@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   initialize_display_connection.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 16:10:31 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/26 16:50:14 by aradix           ###   ########.fr       */
+/*   Created: 2024/02/25 15:32:54 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/26 15:02:42 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	print_error(short err)
+bool	initialize_display_connection(t_game *game, t_mlx *mlx)
 {
-	ft_puts("Error\n");
-	if (err == INVALID_ARG_NUMBER)
-		ft_puts("todo\n");
-	else if (err == INVALID_MAP_EXTENSION)
-		ft_puts("todo\n");
-	else if (err == CANNOT_OPEN_MAP)
-		ft_puts("todo\n");
-	else if (err == READ_ERROR)
-		ft_puts("todo\n");
-	else if (err == INVALID_MAP)
-		ft_puts("todo\n");
-	else if (err == CANNOT_READ_MAP)
-		ft_puts("todo\n");
-	return (err);
+	game->mlx = mlx;
+	mlx->ptr = mlx_init();
+	if (!mlx->ptr)
+		return (false);
+	return (true);
 }

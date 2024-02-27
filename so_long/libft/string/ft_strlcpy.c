@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_loop.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:11:49 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/15 16:18:46 by aradix           ###   ########.fr       */
+/*   Created: 2023/11/09 10:21:59 by aradix            #+#    #+#             */
+/*   Updated: 2023/12/08 15:52:41 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	stop_game_loop(t_game *game)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	mlx_loop_end(game->mlx->ptr);
-	return (SUCCESS);
-}
+	size_t	i;
 
-void	start_game_loop(t_game *game)
-{
-	mlx_hook(game->mlx->window->ptr, 2, (1L << 0), key_press_event, game);
-	mlx_hook(game->mlx->window->ptr, 4, (1L << 17), stop_game_loop, game);
-	mlx_loop(game->mlx->ptr);
+	i = 0;
+	if (size == 0)
+		return (ft_strlen(src));
+	while (src[i] && (i < size - 1))
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	while (src[i])
+		i++;
+	return (i);
 }

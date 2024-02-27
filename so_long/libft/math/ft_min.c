@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 16:10:31 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/26 16:50:14 by aradix           ###   ########.fr       */
+/*   Created: 2024/02/22 16:47:03 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/22 16:48:43 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	print_error(short err)
+int	ft_min(int a, int b)
 {
-	ft_puts("Error\n");
-	if (err == INVALID_ARG_NUMBER)
-		ft_puts("todo\n");
-	else if (err == INVALID_MAP_EXTENSION)
-		ft_puts("todo\n");
-	else if (err == CANNOT_OPEN_MAP)
-		ft_puts("todo\n");
-	else if (err == READ_ERROR)
-		ft_puts("todo\n");
-	else if (err == INVALID_MAP)
-		ft_puts("todo\n");
-	else if (err == CANNOT_READ_MAP)
-		ft_puts("todo\n");
-	return (err);
+	if (a < b)
+		return (a);
+	return (b);
 }

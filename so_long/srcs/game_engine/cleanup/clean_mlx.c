@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
+/*   clean_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 13:47:19 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/12 11:56:09 by aradix           ###   ########.fr       */
+/*   Created: 2024/02/26 14:08:46 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/26 19:40:47 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	clean_textures(t_mlx *mlx, t_texture *texture, int i)
-{
-	while (--i >= 0)
-	{
-		if (texture[i].image != NULL)
-			mlx_destroy_image(mlx->ptr, texture[i].image);
-	}
-}
-
 short	clean_mlx(t_mlx *mlx, short state)
 {
 	if (state == SUCCESS || state >= LOAD_TEXTURES_FAILED)
-		clean_textures(mlx, mlx->texture, NB_TEXTURES);
+		clean_textures(mlx, mlx->textures);
 	if (state == SUCCESS || state > MLX_WINDOW_FAILED)
 		mlx_destroy_window(mlx->ptr, mlx->window->ptr);
 	if (state == SUCCESS || state > MLX_IMAGE_FAILED)

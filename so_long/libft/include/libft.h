@@ -1,12 +1,12 @@
-
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 15:41:13 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/15 12:17:56 by aradix           ###   ########.fr       */
+/*   Created: 2024/02/22 16:41:36 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/26 12:50:15 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ ssize_t				ft_strchr(const char *s, int c);
 void				*ft_memset(void *s, int c, size_t n);
 char				*ft_strnew(size_t n, int c);
 void				ft_mtrxfree(char **mtrx);
+char				*ft_strjoin(char const *s1, char const *s2);
+size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 
 /* STDIO */
 ssize_t				ft_puts(const char *s);
@@ -41,6 +43,12 @@ t_list				*ft_lstlast(t_list *lst);
 void				ft_lstfree(t_list *lst);
 
 /* STDLIB */
+int					ft_atoi(const char *nptr);
+char				*ft_itoa(int n);
 unsigned int		ft_rand(unsigned int *seed);
+
+/* MATH */
+int					ft_min(int a, int b);
+int					ft_max(int a, int b);
 
 #endif

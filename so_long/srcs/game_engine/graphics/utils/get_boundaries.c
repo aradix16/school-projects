@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   get_boundaries.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 16:10:31 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/26 16:50:14 by aradix           ###   ########.fr       */
+/*   Created: 2024/02/27 14:53:55 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/27 17:43:03 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	print_error(short err)
+float	get_boundaries(int player_pos, int window_size, int map_size)
 {
-	ft_puts("Error\n");
-	if (err == INVALID_ARG_NUMBER)
-		ft_puts("todo\n");
-	else if (err == INVALID_MAP_EXTENSION)
-		ft_puts("todo\n");
-	else if (err == CANNOT_OPEN_MAP)
-		ft_puts("todo\n");
-	else if (err == READ_ERROR)
-		ft_puts("todo\n");
-	else if (err == INVALID_MAP)
-		ft_puts("todo\n");
-	else if (err == CANNOT_READ_MAP)
-		ft_puts("todo\n");
-	return (err);
+	float	half;
+	float	b;
+
+	if ((map_size * TILE_SIZE) <= window_size)
+		return (0);
+	half = window_size / 2;
+	b = ((player_pos * TILE_SIZE) + (TILE_SIZE / 2)) - half;
+	if (b < 0)
+		b = 0;
+	else if ((b + window_size) > (map_size * TILE_SIZE))
+		b = (map_size * TILE_SIZE) - window_size;
+	return (b);
 }

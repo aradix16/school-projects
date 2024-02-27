@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_extension.c                                  :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 15:56:00 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/08 19:17:11 by aradix           ###   ########.fr       */
+/*   Created: 2024/02/22 16:48:21 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/22 16:48:41 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-bool	check_extension(const char *filepath)
+int	ft_max(int a, int b)
 {
-	size_t	len;
-
-	len = ft_strlen(filepath);
-	return (len > 4 && ft_strncmp(filepath + (len - 4), ".ber", 4) == 0);
+	if (a < b)
+		return (a);
+	return (b);
 }

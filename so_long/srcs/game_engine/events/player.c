@@ -5,26 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 15:11:50 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/15 16:20:02 by aradix           ###   ########.fr       */
+/*   Created: 2024/02/26 20:16:43 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/27 17:16:24 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* IF == WALL */
-/* 	round si a lorigine le player = 1.00 et qu'il monte  */
-/* 	et que on est a 0.80 (donc 0 si on round), mettre le player a 1.0 */
-
-void	update_player_position(t_map *map, t_state *state, t_pos updated_pos)
+void	update_player_position(t_game *game, t_map *map,
+		t_coordinate updated_position)
 {
-	updated_pos.x += state->player.x;
-	updated_pos.y += state->player.y;
-	if (map->content[(size_t)updated_pos.x][(size_t)updated_pos.y] == WALL)
+	updated_position.x += game->player.x;
+	updated_position.y += game->player.y;
+	
+	int i = 0;
+	printf("\n");
+	while (game->map->content[i])
+	{
+		printf("%s\n", game->map->content[i]);
+		i++;
+	}
+	printf("\n");
+
+
+	if (map->content[updated_position.y][updated_position.x] == OBSTACLE)
 		return ;
-	if (map->content[(size_t)updated_pos.x][(size_t)updated_pos.y] == EXIT)
+	if (map->content[updated_position.y][updated_position.x] == EXIT)
 		return ;
-	map->content[(size_t)state->player.x][(size_t)state->player.y] = EMPTY;
-	map->content[(size_t)updated_pos.x][(size_t)updated_pos.y] = PLAYER;
-	state->player = updated_pos;
+	map->content[game->player.y][game->player.x] = GROUND;
+	map->content[updated_position.y][updated_position.x] = PLAYER;
+	game->player = updated_position;
 }

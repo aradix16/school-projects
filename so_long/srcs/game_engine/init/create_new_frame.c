@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   create_new_frame.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 16:10:31 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/26 16:50:14 by aradix           ###   ########.fr       */
+/*   Created: 2024/02/26 15:00:30 by aradix            #+#    #+#             */
+/*   Updated: 2024/02/27 14:37:02 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	print_error(short err)
+bool	create_new_frame(t_mlx *mlx, t_mlx_img *frame, t_window *window)
 {
-	ft_puts("Error\n");
-	if (err == INVALID_ARG_NUMBER)
-		ft_puts("todo\n");
-	else if (err == INVALID_MAP_EXTENSION)
-		ft_puts("todo\n");
-	else if (err == CANNOT_OPEN_MAP)
-		ft_puts("todo\n");
-	else if (err == READ_ERROR)
-		ft_puts("todo\n");
-	else if (err == INVALID_MAP)
-		ft_puts("todo\n");
-	else if (err == CANNOT_READ_MAP)
-		ft_puts("todo\n");
-	return (err);
+	mlx->frame = frame;
+	frame->image = mlx_new_image(mlx->ptr, window->size.x, window->size.y);
+	if (!frame->image)
+		return (false);
+	frame->data = (int *)mlx_get_data_addr(frame->image, &frame->bits_per_pixel,
+			&frame->size_line, &frame->endian);
+	if (!frame->data)
+	{
+		mlx_destroy_image(mlx->ptr, frame->image);
+		return (false);
+	}
+	return (true);
 }

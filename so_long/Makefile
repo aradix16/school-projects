@@ -14,21 +14,27 @@ MLX				:=		$(MLX_PATH)/libmlx.a
 
 INCLUDE			:=		include
 
-SRCS			:=		srcs/so_long.c							\
-						srcs/error/print_error.c				\
-						srcs/parsing/parsing.c					\
-						srcs/parsing/check_extension.c			\
-						srcs/parsing/map/read_and_store.c		\
-						srcs/parsing/map/check_validity.c		\
-						srcs/parsing/map/check_playability.c	\
-						srcs/engine/start.c						\
-						srcs/engine/cleanup.c					\
-						srcs/engine/textures.c					\
-						srcs/engine/window.c					\
-						srcs/engine/render.c					\
-						srcs/engine/game_loop.c					\
-						srcs/engine/events.c					\
-						srcs/engine/player.c					\
+SRCS			:=		srcs/so_long.c											\
+						srcs/error/print_error.c 								\
+						srcs/parsing/parsing.c 									\
+						srcs/parsing/check_map_extension.c						\
+						srcs/parsing/read_and_store_map.c						\
+						srcs/parsing/check_map_validity.c						\
+						srcs/parsing/check_map_playability.c					\
+						srcs/game_engine/core/start_game_engine.c				\
+						srcs/game_engine/init/initialize_display_connection.c 	\
+						srcs/game_engine/init/load_textures.c					\
+						srcs/game_engine/init/create_new_window.c				\
+						srcs/game_engine/init/create_new_frame.c				\
+						srcs/game_engine/cleanup/clean_mlx.c					\
+						srcs/game_engine/cleanup/clean_textures.c				\
+						srcs/game_engine/core/game_loop.c						\
+						srcs/game_engine/events/key_event.c						\
+						srcs/game_engine/events/player.c						\
+						srcs/game_engine/graphics/draw_frame.c					\
+						srcs/game_engine/graphics/render_frame.c				\
+						srcs/game_engine/graphics/utils/get_boundaries.c		\
+						srcs/game_engine/graphics/utils/draw_tile.c				\
 
 OBJS_DIR		:=		objs
 OBJS			:=		$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
