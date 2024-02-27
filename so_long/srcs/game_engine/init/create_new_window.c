@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:49:50 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/27 18:45:58 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/27 19:25:24 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,12 @@ void	get_window_size(t_mlx *mlx, t_window *window, t_map *map)
 	int	y;
 
 	mlx_get_screen_size(mlx->ptr, &x, &y);
-	y -= 100;
+	x = round_value(x);
+	y = round_value(y - 100);
 	if ((map->size.x * TILE_SIZE) < x)
 		x = map->size.x * TILE_SIZE;
 	if ((map->size.y * TILE_SIZE) < y)
 		y = (map->size.y * TILE_SIZE);
-	x = round_value(x);
-	y = round_value(y);
 	window->size.x = x;
 	window->size.y = y;
 }

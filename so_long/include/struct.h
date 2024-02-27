@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:49:12 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/27 14:06:02 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/27 19:49:44 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@ typedef struct s_coordinate
 	int				x;
 	int				y;
 }					t_coordinate;
-
-typedef struct s_area
-{
-	t_coordinate	start;
-	t_coordinate	stop;
-}					t_area;
 
 typedef struct s_window
 {
@@ -45,6 +39,9 @@ typedef struct s_textures
 {
 	t_mlx_img		ground[N_GROUND];
 	t_mlx_img		obstacle[N_OBSTACLE];
+	t_mlx_img		player[N_PLAYER];
+	t_mlx_img		collectible[N_COLLECTIBLE];
+	/* t_mlx_img		exit[N_EXIT]; */
 }					t_textures;
 
 typedef struct s_mlx

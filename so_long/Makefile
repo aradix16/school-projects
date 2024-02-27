@@ -34,7 +34,6 @@ SRCS			:=		srcs/so_long.c											\
 						srcs/game_engine/graphics/draw_frame.c					\
 						srcs/game_engine/graphics/render_frame.c				\
 						srcs/game_engine/graphics/utils/get_boundaries.c		\
-						srcs/game_engine/graphics/utils/draw_tile.c				\
 
 OBJS_DIR		:=		objs
 OBJS			:=		$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))

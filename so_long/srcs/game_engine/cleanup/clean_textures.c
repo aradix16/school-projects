@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:21:31 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/26 19:39:00 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/27 19:33:34 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,6 @@ void	clean_textures(t_mlx *mlx, t_textures *textures)
 {
 	clean_image(mlx, textures->ground, N_GROUND);
 	clean_image(mlx, textures->obstacle, N_OBSTACLE);
+	clean_image(mlx, textures->player, N_PLAYER);
+	clean_image(mlx, textures->collectible, N_COLLECTIBLE);
 }

@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:49:15 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/27 14:36:50 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/27 19:49:27 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 #define GROUND_PATH "assets/ground/ground_"
 #define OBSTACLE_PATH "assets/obstacle/obstacle_"
+#define PLAYER_PATH "assets/player/player_"
+#define COLLECTIBLE_PATH "assets/collectible/collectible_"
+/* #define EXIT_PATH "assets/exit/exit_" */
 
 bool	get_texture_data(t_mlx_img *texture)
 {
-	texture->data = (int *)mlx_get_data_addr(texture->image, &texture->bits_per_pixel,
-			&texture->size_line, &texture->endian);
+	texture->data = (int *)mlx_get_data_addr(texture->image,
+			&texture->bits_per_pixel, &texture->size_line, &texture->endian);
 	return (texture->data);
 }
 
@@ -40,8 +43,8 @@ bool	get_texture_image_data(t_mlx *mlx, t_mlx_img *texture, int n, char *dir)
 	while (--n >= 0)
 	{
 		texture_path[dir_len] = n + '0';
-		if (!get_texture_image(mlx, texture, texture_path)
-			|| !get_texture_data(texture))
+		if (!get_texture_image(mlx, &texture[n], texture_path)
+			|| !get_texture_data(&texture[n]))
 			return (false);
 	}
 	return (true);
@@ -58,9 +61,16 @@ bool	load_textures(t_mlx *mlx, t_textures *textures)
 	mlx->textures = textures;
 	init_texture_image(textures->ground, N_GROUND);
 	init_texture_image(textures->obstacle, N_OBSTACLE);
+	init_texture_image(textures->player, N_PLAYER);
+	init_texture_image(textures->collectible, N_COLLECTIBLE);
+	/* init_texture_image(textures->exit, N_EXIT); */
 	if (!get_texture_image_data(mlx, textures->ground, N_GROUND, GROUND_PATH)
 		|| !get_texture_image_data(mlx, textures->obstacle, N_OBSTACLE,
-			OBSTACLE_PATH))
+			OBSTACLE_PATH)
+		|| !get_texture_image_data(mlx, textures->player, N_PLAYER,
+			PLAYER_PATH)
+		|| !get_texture_image_data(mlx, textures->collectible, N_COLLECTIBLE,
+			COLLECTIBLE_PATH))
 		return (false);
 	return (true);
 }

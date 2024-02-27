@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:57:19 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/27 14:54:12 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/27 18:55:51 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int		handle_key_press(int key, t_game *game);
 void	update_player_position(t_game *game, t_map *map,
 			t_coordinate updated_position);
 void	draw_frame(t_game *game);
-void	draw_tile(t_game *game, t_coordinate start_pos, t_area cpy_area,
-			int *texture_data);
 float	get_boundaries(int player_pos, int window_size, int map_size);
 int		render_frame(t_mlx *mlx);
 
