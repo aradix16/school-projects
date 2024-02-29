@@ -6,65 +6,77 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:49:12 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/27 19:49:44 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/29 12:06:56 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+typedef struct timespec	t_nsec;
+
 typedef struct s_coordinate
 {
-	int				x;
-	int				y;
-}					t_coordinate;
+	int					x;
+	int					y;
+}						t_coordinate;
+
+typedef struct s_animation
+{
+	t_nsec				t0;
+	int				state;
+	t_coordinate		move;
+
+}						t_animation;
 
 typedef struct s_window
 {
-	void			*ptr;
-	t_coordinate	size;
-}					t_window;
+	void				*ptr;
+	t_coordinate		size;
+}						t_window;
 
 typedef struct s_mlx_img
 {
-	void			*image;
-	int				*data;
-	t_coordinate	size;
-	int				bits_per_pixel;
-	int				size_line;
-	int				endian;
-}					t_mlx_img;
+	void				*image;
+	int					*data;
+	t_coordinate		size;
+	int					bits_per_pixel;
+	int					size_line;
+	int					endian;
+}						t_mlx_img;
 
 typedef struct s_textures
 {
-	t_mlx_img		ground[N_GROUND];
-	t_mlx_img		obstacle[N_OBSTACLE];
-	t_mlx_img		player[N_PLAYER];
-	t_mlx_img		collectible[N_COLLECTIBLE];
+	t_mlx_img			ground[N_GROUND];
+	t_mlx_img			obstacle[N_OBSTACLE];
+	t_mlx_img			player[N_PLAYER];
+	t_mlx_img			collectible[N_COLLECTIBLE];
 	/* t_mlx_img		exit[N_EXIT]; */
-}					t_textures;
+}						t_textures;
 
 typedef struct s_mlx
 {
-	void			*ptr;
-	t_textures		*textures;
-	t_window		*window;
-	t_mlx_img		*frame;
-}					t_mlx;
+	void				*ptr;
+	t_textures			*textures;
+	t_window			*window;
+	t_mlx_img			*frame;
+}						t_mlx;
 
 typedef struct s_map
 {
-	char			**content;
-	t_coordinate	size;
-}					t_map;
+	char				**content;
+	t_coordinate		size;
+	t_coordinate		pos;
+}						t_map;
 
 typedef struct s_game
 {
-	t_coordinate	player;
-	int				n_collectibles;
-	bool			exit;
-	t_map			*map;
-	t_mlx			*mlx;
-}					t_game;
+	t_coordinate		player;
+	t_animation			*player_animation;
+	int					n_collectibles;
+	bool				exit;
+	t_map				*map;
+	t_mlx				*mlx;
+}						t_game;
 
 #endif

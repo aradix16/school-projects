@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 20:36:35 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/27 19:32:47 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/27 20:39:21 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,12 @@ void	draw_item(t_game *game, t_coordinate index, t_coordinate start_pos)
 	c = game->map->content[index.y][index.x];
 	if (c == OBSTACLE)
 		draw_tile(game, start_pos, game->mlx->textures->obstacle[0].data);
-	else if (c == PLAYER)
-		draw_tile(game, start_pos, game->mlx->textures->player[0].data);
 	else if (c == COLLECTIBLE)
 		draw_tile(game, start_pos, game->mlx->textures->collectible[1].data);
+	else if (c == PLAYER)
+	{
+		printf("%d, %d\n", start_pos.x, start_pos.y);
+	}
 }
 
 void	draw_map_row(t_game *game, t_coordinate start, t_coordinate stop, int y)

@@ -29,11 +29,15 @@ SRCS			:=		srcs/so_long.c											\
 						srcs/game_engine/cleanup/clean_mlx.c					\
 						srcs/game_engine/cleanup/clean_textures.c				\
 						srcs/game_engine/core/game_loop.c						\
-						srcs/game_engine/events/key_event.c						\
-						srcs/game_engine/events/player.c						\
-						srcs/game_engine/graphics/draw_frame.c					\
-						srcs/game_engine/graphics/render_frame.c				\
+						srcs/game_engine/events/key_press.c						\
+						srcs/game_engine/events/update_player_position.c		\
+						srcs/game_engine/graphics/render.c						\
+						srcs/game_engine/graphics/draw_map.c					\
+						srcs/game_engine/graphics/draw_player.c					\
 						srcs/game_engine/graphics/utils/get_boundaries.c		\
+						srcs/game_engine/graphics/utils/draw_texture_tile.c		\
+						srcs/game_engine/graphics/player_animation.c			\
+						srcs/game_engine/graphics/utils/time.c					\
 
 OBJS_DIR		:=		objs
 OBJS			:=		$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))

@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:43:08 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/27 19:49:14 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/29 11:01:04 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@
 
 # define N_GROUND 1
 # define N_OBSTACLE 1
-# define N_PLAYER 1
+# define N_PLAYER 3
 # define N_COLLECTIBLE 3
 /* # define N_EXIT 1 */
+
+
+# define ANIMATION_DURATION 500
 
 #endif

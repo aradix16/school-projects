@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_event.c                                        :+:      :+:    :+:   */
+/*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 20:04:30 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/26 20:40:11 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/28 15:34:21 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,5 @@ int	handle_key_press(int key, t_game *game)
 		update_player_position(game, game->map, (t_coordinate){-1, 0});
 	else if (key == RIGHT)
 		update_player_position(game, game->map, (t_coordinate){1, 0});
-	else
-		return (0);
-	draw_frame(game);
-	render_frame(game->mlx);
 	return (0);
 }

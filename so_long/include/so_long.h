@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:42:29 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/20 18:51:24 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/28 19:20:35 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define SO_LONG_H
 
 # include <stdio.h> // test only
-#include <math.h>
+# include <math.h>
+# include <time.h>
+
 
 
 # include <stdlib.h>
