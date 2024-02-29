@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:49:12 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/29 12:06:56 by aradix           ###   ########.fr       */
+/*   Updated: 2024/02/29 20:17:10 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ typedef struct s_coordinate
 	int					y;
 }						t_coordinate;
 
-typedef struct s_animation
+typedef struct s_render
 {
-	t_nsec				t0;
-	int				state;
+	bool				key_press;
+	int					animation_state;
 	t_coordinate		move;
-
-}						t_animation;
+	t_nsec				t0;
+}						t_render;
 
 typedef struct s_window
 {
@@ -51,7 +51,6 @@ typedef struct s_textures
 	t_mlx_img			obstacle[N_OBSTACLE];
 	t_mlx_img			player[N_PLAYER];
 	t_mlx_img			collectible[N_COLLECTIBLE];
-	/* t_mlx_img		exit[N_EXIT]; */
 }						t_textures;
 
 typedef struct s_mlx
@@ -66,17 +65,16 @@ typedef struct s_map
 {
 	char				**content;
 	t_coordinate		size;
-	t_coordinate		pos;
 }						t_map;
 
 typedef struct s_game
 {
 	t_coordinate		player;
-	t_animation			*player_animation;
 	int					n_collectibles;
 	bool				exit;
 	t_map				*map;
 	t_mlx				*mlx;
+	t_render			*render;
 }						t_game;
 
 #endif
