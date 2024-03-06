@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:00:14 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/26 18:18:12 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/06 15:19:49 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ short	check_map_playability(t_game *game, t_map *map)
 		return (MALLOC_ERROR);
 	game->exit = false;
 	save = game->n_collectibles;
-	if (!explore(game, map->content, check, game->player))
+	if (!explore(game, map->content, check, game->player->pos))
 		return (free(check), UNPLAYABLE_MAP);
 	free(check);
 	game->n_collectibles = save;

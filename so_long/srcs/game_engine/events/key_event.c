@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:21:38 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/29 20:05:40 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/04 13:26:11 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,3 @@ int	on_key_release(int key, t_game *game)
 	stop_player(game);
 	return (0);
 }
-

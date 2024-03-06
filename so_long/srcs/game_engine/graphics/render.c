@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 19:33:15 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/29 23:19:39 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/04 15:34:24 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ void	init(t_game *game)
 void	prerender(t_game *game, t_render *render)
 {
 	game->render = render;
-	game->render->animation_state = 0;
+	game->render->animation_state = 1;
 	game->render->key_press = false;
+	game->render->t0 = get_current_time();
 	init(game);
 	draw_map(game);
 	draw_player(game);

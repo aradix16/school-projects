@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:48:22 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/28 16:56:44 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/04 15:31:53 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	draw_map(t_game *game)
 	t_coordinate	stop;
 	int				y;
 
+	start = game->render->move;
 	start.x = get_boundaries(game->player.x, game->mlx->window->size.x,
 			game->map->size.x);
 	start.y = get_boundaries(game->player.y, game->mlx->window->size.y,

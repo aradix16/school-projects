@@ -6,17 +6,14 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:32:54 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/26 15:02:42 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/06 15:35:33 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	initialize_display_connection(t_game *game, t_mlx *mlx)
+bool	initialize_display_connection(t_graphics *graphics)
 {
-	game->mlx = mlx;
-	mlx->ptr = mlx_init();
-	if (!mlx->ptr)
-		return (false);
-	return (true);
+	graphics->mlx_ptr = mlx_init();
+	return (graphics->mlx_ptr);
 }

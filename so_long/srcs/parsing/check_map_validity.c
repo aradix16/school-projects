@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:18:45 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/26 17:58:55 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/06 15:16:18 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ short	save_map_data(t_game *game, int data, size_t x, size_t y)
 {
 	if (data == 'P')
 	{
-		if (game->player.x)
+		if (game->player->pos.x)
 			return (INVALID_MAP);
-		game->player.x = x;
-		game->player.y = y;
+		game->player->pos.x = x;
+		game->player->pos.y = y;
 	}
 	else if (data == 'E')
 	{
@@ -83,7 +83,7 @@ short	check_map_validity(t_game *game, t_map *map)
 			return (err);
 		++y;
 	}
-	if (game->player.x == 0 || !game->exit || game->n_collectibles < 1)
+	if (game->player->pos.x == 0 || !game->exit || game->n_collectibles < 1)
 		return (INVALID_MAP);
 	err = check_last_line(map->content[y - 1]);
 	if (err)

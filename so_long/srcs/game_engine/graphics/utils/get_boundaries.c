@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 20:13:18 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/29 20:43:31 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/04 15:49:12 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,25 @@ float	get_boundaries(int player_pos, int window_size, int map_size)
 	else if ((b + window_size) > (map_size * TILE_SIZE))
 		b = (map_size * TILE_SIZE) - window_size;
 	return (b);
+}
+
+
+// use pos in px instead of using map pos
+float get_boundaries2(int window_size, int map_size, int current_position)
+{
+    float half;
+    float b;
+
+    if ((map_size * TILE_SIZE) <= window_size)
+        return 0;
+
+    half = window_size / 2;
+    b = current_position - half;
+
+    if (b < 0)
+        b = 0;
+    else if ((b + window_size) > (map_size * TILE_SIZE))
+        b = (map_size * TILE_SIZE) - window_size;
+
+    return b;
 }

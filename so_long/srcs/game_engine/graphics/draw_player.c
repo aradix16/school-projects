@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:52:07 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/29 23:42:24 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/04 15:23:50 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,28 @@
 void	draw_player(t_game *game)
 {
 	int id;
+	t_coordinate start;
+
+	start.x = (game->player.x * TILE_SIZE) - game->render->move.x;
+	start.y = (game->player.y * TILE_SIZE) - game->render->move.y;
 	
 	id = game->render->animation_state;
+
+	
+	if (id > 0)
+	{
+
+	if (id % 2)
+		id = 2;
+	else 
+		id = 1;
+
+	}
 
 	/* id = game->player_animation->state; */
 	/* if (id >= N_PLAYER) */
 	/* 	id = 0; */
-	draw_texture_tile(game, game->render->move, game->mlx->textures->player[id].data);
+	draw_texture_tile(game, start, game->mlx->textures->player[id].data);
 }
 
 /* int target_ms = 500; */
