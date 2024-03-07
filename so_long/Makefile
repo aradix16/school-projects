@@ -22,15 +22,16 @@ SRCS			:=		srcs/so_long.c											\
 						srcs/parsing/check_map_validity.c						\
 						srcs/parsing/check_map_playability.c					\
 						srcs/game_engine/core/start_game_engine.c				\
+						srcs/game_engine/core/game_loop.c						\
 						srcs/game_engine/init/initialize_display_connection.c 	\
 						srcs/game_engine/init/load_textures.c					\
+						srcs/game_engine/init/create_new_window.c				\
+						srcs/game_engine/init/create_new_frame_buffer.c			\
 						srcs/game_engine/cleanup/clean_mlx.c					\
 						srcs/game_engine/cleanup/clean_textures.c				\
-						# srcs/game_engine/init/create_new_window.c				\
-						# srcs/game_engine/init/create_new_frame.c				\
-						# srcs/game_engine/core/game_loop.c						\
-						# srcs/game_engine/events/key_event.c						\
-						# srcs/game_engine/events/loop_event.c					\
+						srcs/game_engine/graphics/render.c						\
+						srcs/game_engine/events/key_event.c						\
+						srcs/game_engine/events/loop_event.c					\
 						# srcs/game_engine/player/move_player.c					\
 						# srcs/game_engine/graphics/render.c						\
 						# srcs/game_engine/graphics/draw_map.c					\

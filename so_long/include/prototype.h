@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:57:19 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/06 15:52:11 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/06 23:05:00 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,25 @@ short	check_map_playability(t_game *game, t_map *map);
 /* GAME ENGINE */
 /* core */
 short	start_game_engine(t_game *game);
-/* void	start_game_loop(t_game *game, t_mlx *mlx); */
-/* int		stop_game_loop(t_game *game); */
+void	start_game_loop(t_game *game, t_graphics *graphics);
+int		stop_game_loop(t_game *game);
 /* init */
 bool	initialize_display_connection(t_graphics *graphics);
 bool	load_textures(t_graphics *graphics, t_textures *textures);
-/* bool	load_textures(t_mlx *mlx, t_textures *textures); */
-/* bool	create_new_window(t_mlx *mlx, t_window *window, t_map *map); */
-/* bool	create_new_frame(t_mlx *mlx, t_mlx_img *frame, t_window *window); */
+bool	create_new_window(t_graphics *graphics, t_window *window,
+			t_coordinate map_size);
+bool	create_new_frame_buffer(t_graphics *graphics, t_mlx_img *frame,
+			t_coordinate window_size);
 /* cleanup */
 short	clean_mlx(t_graphics *graphics, short state);
-void	clean_textures(t_graphics *graphics, t_textures *textures);
+void	clean_textures(void *mlx_ptr, t_textures *textures);
+/* render */
+void	first_render(t_game *game, t_graphics *graphics);
+
 /* events */
-/* int		on_key_press(int key, t_game *game); */
-/* int		on_key_release(int key, t_game *game); */
-/* int		on_mlx_loop(t_game *game); */
+int		on_key_press(int key, t_game *game);
+int		on_key_release(int key, t_game *game);
+int		on_mlx_loop(t_game *game);
 /* player */
 /* void	move_player(t_game *game, t_coordinate step); */
 /* void	stop_player(t_game *game); */
