@@ -6,16 +6,18 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 19:33:15 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/06 20:42:40 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/12 15:06:41 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* void	render_frame(t_mlx *mlx, t_mlx_img *frame) */
-/* { */
-/* 	mlx_put_image_to_window(mlx->ptr, mlx->window->ptr, frame->image, 0, 0); */
-/* } */
+void	render_frame(t_graphics *graphics)
+{
+	mlx_put_image_to_window(graphics->mlx_ptr, graphics->window->ptr,
+		graphics->frame->image, 0, 0);
+}
+
 /**/
 /* void	render(t_game *game) */
 /* { */
@@ -36,21 +38,20 @@
 /* 	game->render->move = start; */
 /* } */
 /**/
-/* void	prerender(t_game *game, t_render *render) */
-/* { */
-/* 	game->render = render; */
-/* 	game->render->animation_state = 1; */
-/* 	game->render->key_press = false; */
-/* 	game->render->t0 = get_current_time(); */
-/* 	init(game); */
-/* 	draw_map(game); */
-/* 	draw_player(game); */
-/* 	render_frame(game->mlx, game->mlx->frame); */
-/* } */
 
 void	first_render(t_game *game, t_graphics *graphics)
 {
-
-	(void)game;
-	(void)graphics;
+	graphics->t0 = get_current_time();
+	game->player->pos.x *= TILE_SIZE;
+	game->player->pos.y *= TILE_SIZE;
+	get_boundaries(game, graphics);
+	draw_map(game);
+	render_frame(graphics);
 }
+
+/*
+boundaries.x = game->player->pos.x - get_boundaries(graphics->window->size.x,
+		game->map->size.x, game->player->pos.x);
+boundaries.y = game->player->pos.y - get_boundaries(graphics->window->size.y,
+		game->map->size.y, game->player->pos.y);
+*/

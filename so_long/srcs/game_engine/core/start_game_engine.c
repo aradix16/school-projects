@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:22:02 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/06 22:57:40 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/12 13:03:56 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,3 @@ short	start_game_engine(t_game *game)
 	start_game_loop(game, &graphics);
 	return (clean_mlx(game->graphics, SUCCESS));
 }
-
-/* t_coordinate player; */
-/* player.x = game->player.x * TILE_SIZE; */
-/* t_coordinate tmp; */
-/* tmp.x = get_boundaries2(game->mlx->window->size.x, game->map->size.x,
-		player.x); */
-/* printf("%d\n", player.x - tmp.x); */
-/* prerender(game, &render); */
-/* printf("expected player pos = %d\n", game->render->move.x); */

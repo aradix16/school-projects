@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:57:19 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/06 23:05:00 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/12 14:59:30 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ short	check_map_playability(t_game *game, t_map *map);
 /* core */
 short	start_game_engine(t_game *game);
 void	start_game_loop(t_game *game, t_graphics *graphics);
-int		stop_game_loop(t_game *game);
+int		stop_game_loop(t_graphics *graphics);
 /* init */
 bool	initialize_display_connection(t_graphics *graphics);
 bool	load_textures(t_graphics *graphics, t_textures *textures);
@@ -37,14 +37,24 @@ bool	create_new_frame_buffer(t_graphics *graphics, t_mlx_img *frame,
 			t_coordinate window_size);
 /* cleanup */
 short	clean_mlx(t_graphics *graphics, short state);
-void	clean_textures(void *mlx_ptr, t_textures *textures);
+void	clean_textures(t_xvar *mlx_ptr, t_textures *textures);
 /* render */
 void	first_render(t_game *game, t_graphics *graphics);
-
+void	draw_map(t_game *game);
+void	draw_texture_tile(t_game *game, t_coordinate start_pos, int *texture_data);
 /* events */
 int		on_key_press(int key, t_game *game);
 int		on_key_release(int key, t_game *game);
 int		on_mlx_loop(t_game *game);
+/* utils */
+void	get_boundaries(t_game *game, t_graphics *graphics);
+t_nsec	get_current_time(void);
+int	get_diff_ms(t_nsec nano, t_nsec t0);
+
+/* player */
+void	move_player(t_game *game, t_coordinate step);
+void	stop_player(t_game *game);
+
 /* player */
 /* void	move_player(t_game *game, t_coordinate step); */
 /* void	stop_player(t_game *game); */

@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:08:46 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/06 22:58:47 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/12 12:04:50 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 short	clean_mlx(t_graphics *graphics, short state)
 {
-	return (0);
-
-
-
 	if (state == SUCCESS || state >= LOAD_TEXTURES_FAILED)
 		clean_textures(graphics->mlx_ptr, graphics->textures);
 	if (state == SUCCESS || state > MLX_WINDOW_FAILED)

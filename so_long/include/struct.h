@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:49:12 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/06 22:40:15 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/12 15:00:37 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_window
 {
 	void				*ptr;
 	t_coordinate		size;
+	t_coordinate		boundaries;
 }						t_window;
 
 typedef struct s_textures
@@ -56,10 +57,12 @@ typedef struct s_textures
 
 typedef struct s_graphics
 {
-	void				*mlx_ptr;
+	t_xvar				*mlx_ptr;
 	t_textures			*textures;
 	t_window			*window;
 	t_mlx_img			*frame;
+	bool				rendering;
+	t_nsec				t0;
 }						t_graphics;
 
 typedef struct s_player

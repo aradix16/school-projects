@@ -6,13 +6,13 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:21:31 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/06 22:40:51 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/12 12:12:23 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	clean_image(void *mlx_ptr, t_mlx_img *texture, int n)
+void	clean_image(t_xvar *mlx_ptr, t_mlx_img *texture, int n)
 {
 	while (--n >= 0)
 	{
@@ -21,7 +21,7 @@ void	clean_image(void *mlx_ptr, t_mlx_img *texture, int n)
 	}
 }
 
-void	clean_textures(void *mlx_ptr, t_textures *textures)
+void	clean_textures(t_xvar *mlx_ptr, t_textures *textures)
 {
 	clean_image(mlx_ptr, textures->ground, N_GROUND);
 	clean_image(mlx_ptr, textures->obstacle, N_OBSTACLE);

@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:42:29 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/06 22:45:31 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/12 12:11:14 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <fcntl.h>
 
 # include "mlx.h"
-/* # include "mlx_int.h" */
+# include "mlx_int.h"
 # include "libft.h"
 
 # include "define.h"
