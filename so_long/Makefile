@@ -34,11 +34,11 @@ SRCS			:=		srcs/so_long.c											\
 						srcs/game_engine/events/loop_event.c					\
 						srcs/game_engine/graphics/utils/get_boundaries.c		\
 						srcs/game_engine/graphics/draw_map.c					\
+						srcs/game_engine/graphics/draw_player.c					\
 						srcs/game_engine/graphics/utils/draw_texture_tile.c		\
 						srcs/game_engine/player/move_player.c					\
 						srcs/game_engine/graphics/utils/time.c					\
 						# srcs/game_engine/graphics/render.c					\
-						# srcs/game_engine/graphics/draw_player.c					\
 
 OBJS_DIR		:=		objs
 OBJS			:=		$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))

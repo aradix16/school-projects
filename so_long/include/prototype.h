@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:57:19 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/12 14:59:30 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/13 12:57:49 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ bool	create_new_frame_buffer(t_graphics *graphics, t_mlx_img *frame,
 short	clean_mlx(t_graphics *graphics, short state);
 void	clean_textures(t_xvar *mlx_ptr, t_textures *textures);
 /* render */
-void	first_render(t_game *game, t_graphics *graphics);
+void	prerender(t_game *game, t_sprite *sprite);
+void	render(t_game *game);
 void	draw_map(t_game *game);
+void	draw_player(t_game *game);
 void	draw_texture_tile(t_game *game, t_coordinate start_pos, int *texture_data);
 /* events */
 int		on_key_press(int key, t_game *game);

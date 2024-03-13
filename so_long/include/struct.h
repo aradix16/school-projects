@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:49:12 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/12 15:00:37 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/13 11:49:05 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 
 typedef struct timespec	t_nsec;
 
-/* typedef struct s_render */
-/* { */
-/* 	bool				key_press; */
-/* 	int					animation_state; */
-/* 	t_coordinate		move; */
-/* 	t_nsec				t0; */
-/* }						t_render; */
-
 typedef struct s_coordinate
 {
 	int					x;
 	int					y;
 }						t_coordinate;
+
+typedef struct s_sprite
+{
+	bool				is_moving;
+	t_nsec				t0;
+	short				state;
+}						t_sprite;
 
 typedef struct s_mlx_img
 {
@@ -61,8 +60,7 @@ typedef struct s_graphics
 	t_textures			*textures;
 	t_window			*window;
 	t_mlx_img			*frame;
-	bool				rendering;
-	t_nsec				t0;
+	t_sprite			*sprite;
 }						t_graphics;
 
 typedef struct s_player

@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:59:41 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/12 15:42:30 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/13 12:47:24 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ TODO:
 	- check if player stay on the map 
 	- check for collectbles / exit 
 	- "randomness" with textures (ground, obstacles, collectibles)
-	- not sure about the "waking up" animation:
+	- implement the "waking up" animation:
 	basic animation:
 	0			25			50 
 	[State1]	[State2]	[State1]	
@@ -63,4 +63,5 @@ TODO:
 	- count player steps
 	- maybe move the code from "player" in "events" because all the player moving logic is inside the render/animation code logic
 	- add "killer mushroom" and the "dead player" texture + state (3)
+	- merge draw_map and draw_player in a single draw.c file ?
 */

@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:21:38 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/12 14:50:29 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/13 14:06:49 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,5 @@ int	on_key_press(int key, t_game *game)
 		move_player(game, (t_coordinate){-1, 0});
 	else if (key == RIGHT)
 		move_player(game, (t_coordinate){1, 0});
-	else
-		stop_player(game);
 	return (0);
 }

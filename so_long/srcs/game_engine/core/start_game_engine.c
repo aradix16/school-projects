@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:22:02 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/12 13:03:56 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/13 11:59:20 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ short	start_game_engine(t_game *game)
 	t_textures	textures;
 	t_window	window;
 	t_mlx_img	frame;
+	t_sprite	sprite;
 
 	game->graphics = &graphics;
 	if (!initialize_display_connection(&graphics))
@@ -28,7 +29,7 @@ short	start_game_engine(t_game *game)
 		return (clean_mlx(&graphics, MLX_WINDOW_FAILED));
 	if (!create_new_frame_buffer(&graphics, &frame, graphics.window->size))
 		return (clean_mlx(&graphics, MLX_IMAGE_FAILED));
-	first_render(game, &graphics);
+	prerender(game, &sprite);
 	start_game_loop(game, &graphics);
 	return (clean_mlx(game->graphics, SUCCESS));
 }
