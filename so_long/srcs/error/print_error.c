@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:10:31 by aradix            #+#    #+#             */
-/*   Updated: 2024/02/27 19:56:35 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/14 15:16:58 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	print_error(short err)
 		ft_puts("todo\n");
 	else if (err == CANNOT_READ_MAP)
 		ft_puts("todo\n");
-
 	printf("%d\n", err);
 	return (err);
 }

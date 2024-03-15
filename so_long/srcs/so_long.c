@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:59:41 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/13 12:47:24 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/15 13:04:59 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,27 +41,28 @@ int	main(int ac, char **av)
 	return (SUCCESS);
 }
 
-
 /*
 TODO:
-	- deal with state animation (0 sleep, 1 walk-a, 2 walk-b)
-	- update boundaries on each player move 
-	- check if player stay on the map 
-	- check for collectbles / exit 
-	- "randomness" with textures (ground, obstacles, collectibles)
-	- implement the "waking up" animation:
-	basic animation:
-	0			25			50 
-	[State1]	[State2]	[State1]	
+				- implement transition for moving from 0 to +50px
+				- deal with state animation (0 sleep, 1 walk-a, 2 walk-b)
+				- update boundaries on each player move
+				- check if player stay on the map
+				- check for collectbles / exit
+				- "randomness" with textures (ground, obstacles, collectibles)
+				- implement the "waking up" animation:
+				basic animation:
+				0			25			50
+				[State1]	[State2]	[State1]
 
-	from sleep state: 
-	0			0			25 			50
-	[State 0]	[State1]	[State2]	[State1]
-	
-	- restructure with a graphics->animation-> ... (t0, state, ...)
-	- find a good texture for the exit 
-	- count player steps
-	- maybe move the code from "player" in "events" because all the player moving logic is inside the render/animation code logic
-	- add "killer mushroom" and the "dead player" texture + state (3)
-	- merge draw_map and draw_player in a single draw.c file ?
+				from sleep state:
+				0			0			25 50 [State 0]
+[State1] [State2]	[State1]
+
+				- find a good texture for the exit
+				- count player steps
+				- maybe move the code from "player" in "events" because all the
+player moving logic is inside the render/animation code logic
+				- add "killer mushroom" and the "dead player" texture + state
+(3)
+				- graphic/render/  graphic/draw/
 */
