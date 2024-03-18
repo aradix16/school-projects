@@ -1,6 +1,6 @@
-NAME			:=		so_long
+NAME				:=		so_long
 
-CC				:=		cc
+CC					:=		cc
 CFLAGS			:=		-Wall -Wextra -Werror
 
 LIBFT_PATH		:=		libft
