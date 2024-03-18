@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:57:19 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/13 12:57:49 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/18 19:53:39 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ void	get_boundaries(t_game *game, t_graphics *graphics);
 t_nsec	get_current_time(void);
 int	get_diff_ms(t_nsec nano, t_nsec t0);
 
-/* player */
-void	move_player(t_game *game, t_coordinate step);
-void	stop_player(t_game *game);
 
 /* player */
 /* void	move_player(t_game *game, t_coordinate step); */

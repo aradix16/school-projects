@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:49:12 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/13 20:33:52 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/18 20:56:02 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_sprite
 {
 	bool				is_moving;
 	t_nsec				t0;
+	t_nsec				p0;
 	short				state;
 }						t_sprite;
 

@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:21:38 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/13 14:06:49 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/18 19:54:01 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,22 @@
 #define LEFT 97
 #define RIGHT 100
 
+void	stop_player(t_game *game)
+{
+	game->graphics->sprite->is_moving = false;
+}
+
 int	on_key_release(int key, t_game *game)
 {
 	(void)key;
 	stop_player(game);
 	return (0);
+}
+
+void	move_player(t_game *game, t_coordinate step)
+{
+	game->graphics->sprite->is_moving = true;
+	(void)step;
 }
 
 int	on_key_press(int key, t_game *game)
