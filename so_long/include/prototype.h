@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:57:19 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/18 19:53:39 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/19 20:50:55 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	prerender(t_game *game, t_sprite *sprite);
 void	render(t_game *game);
 void	draw_map(t_game *game);
 void	draw_player(t_game *game);
-void	draw_texture_tile(t_game *game, t_coordinate start_pos, int *texture_data);
+void	draw_texture_tile(t_game *game, t_coordinate start_pos, int *texture_data, short facing);
 /* events */
 int		on_key_press(int key, t_game *game);
 int		on_key_release(int key, t_game *game);

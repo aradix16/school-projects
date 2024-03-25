@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:49:12 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/18 20:56:02 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/25 10:50:37 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_sprite
 	t_nsec				t0;
 	t_nsec				p0;
 	short				state;
+	t_coordinate		step;
+	bool				right_facing;
 }						t_sprite;
 
 typedef struct s_mlx_img

@@ -13,20 +13,18 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 todo.txt
 badd +1 srcs/so_long.c
-badd +40 Makefile
+badd +0 Makefile
+badd +21 srcs/game_engine/events/key_event.c
 badd +1 srcs/game_engine/core/game_loop.c
-badd +0 srcs/game_engine/core/start_game_engine.c
-badd +113 srcs/game_engine/events/loop_event.c
-badd +37 srcs/game_engine/events/key_event.c
-badd +14 srcs/game_engine/player/move_player.c
-badd +55 include/prototype.h
-badd +28 include/struct.h
-badd +4 include/define.h
-badd +29 srcs/game_engine/graphics/render.c
-badd +24 srcs/game_engine/graphics/draw_player.c
-badd +1 srcs/game_engine/graphics/draw_map.c
+badd +70 srcs/game_engine/events/loop_event.c
+badd +1 srcs/game_engine/graphics/render.c
+badd +36 srcs/game_engine/core/start_game_engine.c
+badd +1 include/prototype.h
+badd +1 include/define.h
+badd +1 include/struct.h
+badd +38 srcs/game_engine/graphics/utils/draw_texture_tile.c
+badd +38 srcs/game_engine/graphics/draw_player.c
 argglobal
 %argdel
 set stal=2
@@ -42,10 +40,6 @@ set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -56,13 +50,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 46 + 41) / 82)
-exe 'vert 1resize ' . ((&columns * 159 + 159) / 318)
-exe '2resize ' . ((&lines * 33 + 41) / 82)
-exe 'vert 2resize ' . ((&columns * 159 + 159) / 318)
-exe 'vert 3resize ' . ((&columns * 158 + 159) / 318)
+exe 'vert 1resize ' . ((&columns * 119 + 119) / 238)
+exe 'vert 2resize ' . ((&columns * 118 + 119) / 238)
 argglobal
-balt todo.txt
+balt srcs/so_long.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -73,17 +64,17 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 38 - ((37 * winheight(0) + 23) / 46)
+let s:l = 1 - ((0 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 38
-normal! 035|
+keepjumps 1
+normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("todo.txt", ":p")) | buffer todo.txt | else | edit todo.txt | endif
+if bufexists(fnamemodify("Makefile", ":p")) | buffer Makefile | else | edit Makefile | endif
 if &buftype ==# 'terminal'
-  silent file todo.txt
+  silent file Makefile
 endif
 balt srcs/so_long.c
 setlocal fdm=manual
@@ -96,48 +87,26 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 3 - ((2 * winheight(0) + 16) / 33)
+let s:l = 5 - ((4 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 3
+keepjumps 5
 normal! 0
 wincmd w
-argglobal
-if bufexists(fnamemodify("Makefile", ":p")) | buffer Makefile | else | edit Makefile | endif
-if &buftype ==# 'terminal'
-  silent file Makefile
-endif
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 34 - ((33 * winheight(0) + 40) / 80)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 34
-normal! 0
-wincmd w
-exe '1resize ' . ((&lines * 46 + 41) / 82)
-exe 'vert 1resize ' . ((&columns * 159 + 159) / 318)
-exe '2resize ' . ((&lines * 33 + 41) / 82)
-exe 'vert 2resize ' . ((&columns * 159 + 159) / 318)
-exe 'vert 3resize ' . ((&columns * 158 + 159) / 318)
+exe 'vert 1resize ' . ((&columns * 119 + 119) / 238)
+exe 'vert 2resize ' . ((&columns * 118 + 119) / 238)
 tabnext
-edit srcs/game_engine/core/start_game_engine.c
+edit srcs/game_engine/events/key_event.c
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
-1wincmd h
+wincmd _ | wincmd |
+vsplit
+2wincmd h
+wincmd w
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -148,10 +117,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 158 + 159) / 318)
-exe 'vert 2resize ' . ((&columns * 159 + 159) / 318)
+exe 'vert 1resize ' . ((&columns * 65 + 119) / 238)
+exe 'vert 2resize ' . ((&columns * 90 + 119) / 238)
+exe 'vert 3resize ' . ((&columns * 81 + 119) / 238)
 argglobal
-balt srcs/game_engine/core/game_loop.c
+balt Makefile
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -162,17 +132,17 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 40) / 80)
+let s:l = 37 - ((33 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 0
+keepjumps 37
+normal! 033|
 wincmd w
 argglobal
-if bufexists(fnamemodify("srcs/game_engine/core/start_game_engine.c", ":p")) | buffer srcs/game_engine/core/start_game_engine.c | else | edit srcs/game_engine/core/start_game_engine.c | endif
+if bufexists(fnamemodify("srcs/game_engine/events/loop_event.c", ":p")) | buffer srcs/game_engine/events/loop_event.c | else | edit srcs/game_engine/events/loop_event.c | endif
 if &buftype ==# 'terminal'
-  silent file srcs/game_engine/core/start_game_engine.c
+  silent file srcs/game_engine/events/loop_event.c
 endif
 balt srcs/game_engine/core/game_loop.c
 setlocal fdm=manual
@@ -185,17 +155,67 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 40) / 80)
+let s:l = 51 - ((38 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 51
+normal! 012|
+wincmd w
+argglobal
+if bufexists(fnamemodify("srcs/game_engine/graphics/render.c", ":p")) | buffer srcs/game_engine/graphics/render.c | else | edit srcs/game_engine/graphics/render.c | endif
+if &buftype ==# 'terminal'
+  silent file srcs/game_engine/graphics/render.c
+endif
+balt srcs/game_engine/events/loop_event.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 16 - ((15 * winheight(0) + 29) / 59)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 16
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 158 + 159) / 318)
-exe 'vert 2resize ' . ((&columns * 159 + 159) / 318)
+exe 'vert 1resize ' . ((&columns * 65 + 119) / 238)
+exe 'vert 2resize ' . ((&columns * 90 + 119) / 238)
+exe 'vert 3resize ' . ((&columns * 81 + 119) / 238)
 tabnext
-edit srcs/game_engine/events/key_event.c
+edit srcs/game_engine/core/start_game_engine.c
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 36 - ((35 * winheight(0) + 29) / 59)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 36
+normal! 0
+tabnext
+edit srcs/game_engine/graphics/draw_player.c
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -225,83 +245,17 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 37 - ((33 * winheight(0) + 40) / 80)
+let s:l = 41 - ((40 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 37
+keepjumps 41
 normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("srcs/game_engine/core/game_loop.c", ":p")) | buffer srcs/game_engine/core/game_loop.c | else | edit srcs/game_engine/core/game_loop.c | endif
+if bufexists(fnamemodify("srcs/game_engine/graphics/utils/draw_texture_tile.c", ":p")) | buffer srcs/game_engine/graphics/utils/draw_texture_tile.c | else | edit srcs/game_engine/graphics/utils/draw_texture_tile.c | endif
 if &buftype ==# 'terminal'
-  silent file srcs/game_engine/core/game_loop.c
-endif
-balt srcs/game_engine/events/key_event.c
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 40) / 80)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 1
-normal! 0
-wincmd w
-2wincmd w
-wincmd =
-tabnext
-edit srcs/game_engine/graphics/render.c
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-wincmd _ | wincmd |
-vsplit
-2wincmd h
-wincmd w
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-wincmd =
-argglobal
-balt srcs/game_engine/core/start_game_engine.c
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 29 - ((28 * winheight(0) + 40) / 80)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 29
-normal! 05|
-wincmd w
-argglobal
-if bufexists(fnamemodify("srcs/game_engine/graphics/draw_map.c", ":p")) | buffer srcs/game_engine/graphics/draw_map.c | else | edit srcs/game_engine/graphics/draw_map.c | endif
-if &buftype ==# 'terminal'
-  silent file srcs/game_engine/graphics/draw_map.c
+  silent file srcs/game_engine/graphics/utils/draw_texture_tile.c
 endif
 balt srcs/game_engine/graphics/draw_player.c
 setlocal fdm=manual
@@ -314,35 +268,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 41 - ((40 * winheight(0) + 40) / 80)
+let s:l = 28 - ((17 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 41
-normal! 0
-wincmd w
-argglobal
-if bufexists(fnamemodify("srcs/game_engine/graphics/draw_player.c", ":p")) | buffer srcs/game_engine/graphics/draw_player.c | else | edit srcs/game_engine/graphics/draw_player.c | endif
-if &buftype ==# 'terminal'
-  silent file srcs/game_engine/graphics/draw_player.c
-endif
-balt srcs/game_engine/graphics/render.c
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 24 - ((23 * winheight(0) + 40) / 80)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 24
-normal! 023|
+keepjumps 28
+normal! 010|
 wincmd w
 wincmd =
 tabnext
@@ -368,7 +299,6 @@ set winminwidth=0
 set winwidth=1
 wincmd =
 argglobal
-balt srcs/game_engine/events/loop_event.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -379,19 +309,42 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 56 - ((55 * winheight(0) + 40) / 80)
+let s:l = 26 - ((25 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 56
+keepjumps 26
+normal! 017|
+wincmd w
+argglobal
+if bufexists(fnamemodify("include/struct.h", ":p")) | buffer include/struct.h | else | edit include/struct.h | endif
+if &buftype ==# 'terminal'
+  silent file include/struct.h
+endif
+balt include/prototype.h
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 55 - ((54 * winheight(0) + 29) / 59)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 55
 normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("srcs/game_engine/graphics/render.c", ":p")) | buffer srcs/game_engine/graphics/render.c | else | edit srcs/game_engine/graphics/render.c | endif
+if bufexists(fnamemodify("include/define.h", ":p")) | buffer include/define.h | else | edit include/define.h | endif
 if &buftype ==# 'terminal'
-  silent file srcs/game_engine/graphics/render.c
+  silent file include/define.h
 endif
-balt include/define.h
+balt include/struct.h
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -402,34 +355,11 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 29 - ((28 * winheight(0) + 40) / 80)
+let s:l = 2 - ((1 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 29
-normal! 06|
-wincmd w
-argglobal
-if bufexists(fnamemodify("srcs/game_engine/graphics/draw_map.c", ":p")) | buffer srcs/game_engine/graphics/draw_map.c | else | edit srcs/game_engine/graphics/draw_map.c | endif
-if &buftype ==# 'terminal'
-  silent file srcs/game_engine/graphics/draw_map.c
-endif
-balt srcs/game_engine/graphics/draw_player.c
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 40) / 80)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 1
+keepjumps 2
 normal! 0
 wincmd w
 wincmd =

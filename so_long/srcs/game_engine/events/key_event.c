@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:21:38 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/18 19:54:01 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:01:30 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ int	on_key_release(int key, t_game *game)
 void	move_player(t_game *game, t_coordinate step)
 {
 	game->graphics->sprite->is_moving = true;
-	(void)step;
+	if (game->graphics->sprite->step.x == 1 )
+		game->graphics->sprite->right_facing = true;
+	else if (game->graphics->sprite->step.x == -1)
+		game->graphics->sprite->right_facing = false;
+	game->graphics->sprite->step = step;
 }
 
 int	on_key_press(int key, t_game *game)

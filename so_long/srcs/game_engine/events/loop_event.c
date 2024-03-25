@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:58:25 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/18 23:01:42 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/25 15:41:09 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,43 +26,53 @@ int	sleep_anim(t_game *game, t_nsec current_time)
 	return (0);
 }
 
-void sprite_anim(t_game *game, t_nsec current_time)
+bool	player_move(t_game *game, t_nsec current_time)
 {
-    int target_diff;
+	int	target_diff;
+	int	pixels_to_move;
 
-    target_diff = get_diff_ms(current_time, game->graphics->sprite->t0);
-    if (target_diff < 130) // Adjusted for smoother animation
-        return;
-    game->graphics->sprite->t0 = current_time;
-    game->graphics->sprite->state++;
-    if (game->graphics->sprite->state == 3)
-        game->graphics->sprite->state = 1;
+	target_diff = get_diff_ms(current_time, game->graphics->sprite->p0);
+	if (target_diff < 30)
+		return (false);
+	game->graphics->sprite->p0 = current_time;
+
+
+	pixels_to_move = 5;
+	if (game->graphics->sprite->step.x != 0)
+	{
+		pixels_to_move *= game->graphics->sprite->step.x;
+		game->player->pos.x += pixels_to_move;
+	}
+	else if (game->graphics->sprite->step.y != 0)
+	{
+		pixels_to_move *= game->graphics->sprite->step.y;
+		game->player->pos.y += pixels_to_move;
+	}
+	return (true);
 }
 
-void player_move(t_game *game, t_nsec current_time)
+bool	sprite_anim(t_game *game, t_nsec current_time)
 {
-    int target_diff;
-    int pixels_to_move;
+	int	target_diff;
 
-    target_diff = get_diff_ms(current_time, game->graphics->sprite->p0);
-    if (target_diff < 30) // Adjusted for frame-rate independent movement
-        return;
-    game->graphics->sprite->p0 = current_time;
-    pixels_to_move = 5;
-    game->player->pos.x -= pixels_to_move;
+	target_diff = get_diff_ms(current_time, game->graphics->sprite->t0);
+	if (target_diff < 130)
+		return (false);
+	game->graphics->sprite->t0 = current_time;
+	game->graphics->sprite->state++;
+	if (game->graphics->sprite->state == 3)
+		game->graphics->sprite->state = 1;
+	return (true);
 }
 
-
-
-int on_mlx_loop(t_game *game)
+int	on_mlx_loop(t_game *game)
 {
-    t_nsec current_time;
+	t_nsec	current_time;
 
-    current_time = get_current_time();
-    if (!game->graphics->sprite->is_moving)
-        return (sleep_anim(game, current_time));
-    sprite_anim(game, current_time); // Smooth animation
-    player_move(game, current_time); // Frame-rate independent movement
-    render(game);
-    return (0);
+	current_time = get_current_time();
+	if (!game->graphics->sprite->is_moving)
+		return (sleep_anim(game, current_time));
+	if (sprite_anim(game, current_time) || player_move(game, current_time))
+		render(game);
+	return (0);
 }
