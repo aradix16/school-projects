@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:22:02 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/25 16:17:54 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/26 11:41:28 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ short	start_game_engine(t_game *game)
 {
 	t_graphics	graphics;
 	t_textures	textures;
-	t_window		window;
-	t_mlx_img		frame;
-	t_sprite		sprite;
+	t_window	window;
+	t_mlx_img	frame;
+	t_sprite	sprite;
 
 	game->graphics = &graphics;
 	if (!initialize_display_connection(&graphics))

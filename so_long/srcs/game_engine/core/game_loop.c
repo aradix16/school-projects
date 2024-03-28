@@ -6,15 +6,15 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:55:39 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/12 15:17:51 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/26 12:18:58 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	stop_game_loop(t_graphics *graphics)
+int	stop_game_loop(t_game *game)
 {
-	mlx_loop_end(graphics->mlx_ptr);
+	mlx_loop_end(game->graphics->mlx_ptr);
 	return (SUCCESS);
 }
 

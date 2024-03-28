@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:21:38 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/25 11:01:30 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/27 13:49:04 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	move_player(t_game *game, t_coordinate step)
 int	on_key_press(int key, t_game *game)
 {
 	if (key == ESC)
-		return (stop_game_loop(game->graphics));
+		return (stop_game_loop(game));
 	if (key == UP)
 		move_player(game, (t_coordinate){0, -1});
 	else if (key == DOWN)

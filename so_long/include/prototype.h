@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:57:19 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/19 20:50:55 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/27 13:48:27 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ short	check_map_playability(t_game *game, t_map *map);
 /* core */
 short	start_game_engine(t_game *game);
 void	start_game_loop(t_game *game, t_graphics *graphics);
-int		stop_game_loop(t_graphics *graphics);
+int		stop_game_loop(t_game *game);
 /* init */
 bool	initialize_display_connection(t_graphics *graphics);
 bool	load_textures(t_graphics *graphics, t_textures *textures);

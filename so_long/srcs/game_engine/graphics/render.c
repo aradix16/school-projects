@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 19:33:15 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/25 16:15:33 by aradix           ###   ########.fr       */
+/*   Updated: 2024/03/28 11:42:52 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	prerender(t_game *game, t_sprite *sprite)
 	sprite->right_facing = false;
 	game->player->pos.x *= TILE_SIZE;
 	game->player->pos.y *= TILE_SIZE;
+	printf("y = %d, x = %d\n", game->player->pos.y, game->player->pos.x);
 	game->graphics->sprite->step = (t_coordinate){0, 0};
 	render(game);
 }
