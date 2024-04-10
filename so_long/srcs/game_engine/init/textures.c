@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_textures.c                                    :+:      :+:    :+:   */
+/*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:49:15 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/12 12:32:04 by aradix           ###   ########.fr       */
+/*   Updated: 2024/04/10 08:51:13 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <so_long.h>
 
 #define GROUND_PATH "assets/ground/ground_"
 #define OBSTACLE_PATH "assets/obstacle/obstacle_"
 #define PLAYER_PATH "assets/player/player_"
 #define COLLECTIBLE_PATH "assets/collectible/collectible_"
-/* #define EXIT_PATH "assets/exit/exit_" */
 
 bool	get_texture_data(t_mlx_img *texture)
 {
@@ -65,13 +64,11 @@ bool	load_textures(t_graphics *graphics, t_textures *textures)
 	init_texture_image(textures->obstacle, N_OBSTACLE);
 	init_texture_image(textures->player, N_PLAYER);
 	init_texture_image(textures->collectible, N_COLLECTIBLE);
-	if (!get_texture_image_data(graphics->mlx_ptr,
-			textures->ground, N_GROUND, GROUND_PATH)
-		|| !get_texture_image_data(graphics->mlx_ptr,
+	if (!get_texture_image_data(graphics->mlx_ptr, textures->ground, N_GROUND,
+			GROUND_PATH) || !get_texture_image_data(graphics->mlx_ptr,
 			textures->obstacle, N_OBSTACLE, OBSTACLE_PATH)
-		|| !get_texture_image_data(graphics->mlx_ptr,
-			textures->player, N_PLAYER, PLAYER_PATH)
-		|| !get_texture_image_data(graphics->mlx_ptr,
+		|| !get_texture_image_data(graphics->mlx_ptr, textures->player,
+			N_PLAYER, PLAYER_PATH) || !get_texture_image_data(graphics->mlx_ptr,
 			textures->collectible, N_COLLECTIBLE, COLLECTIBLE_PATH))
 		return (false);
 	return (true);

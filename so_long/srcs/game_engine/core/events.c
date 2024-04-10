@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_event.c                                        :+:      :+:    :+:   */
+/*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 18:21:38 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/27 13:49:04 by aradix           ###   ########.fr       */
+/*   Created: 2024/04/09 15:08:25 by aradix            #+#    #+#             */
+/*   Updated: 2024/04/10 10:12:29 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <so_long.h>
 
 #define ESC 65307
 #define UP 119
@@ -18,9 +18,19 @@
 #define LEFT 97
 #define RIGHT 100
 
-void	stop_player(t_game *game)
+int	on_mlx_loop(t_game *game)
 {
-	game->graphics->sprite->is_moving = false;
+	(void)game;
+	/* t_nsec	current_time; */
+	/* current_time = get_current_time(); */
+	/* if (!game->graphics->sprite->is_moving) */
+	/* 	return (sleep_animation(game, current_time)); */
+	/* if (move_timeout(game, current_time)) */
+	/* 	return (0); */
+	/* if (sprite_anim(game, current_time) || player_move(game,
+			current_time)) */
+	/* 	render(game); */
+	return (0);
 }
 
 int	on_key_release(int key, t_game *game)
@@ -28,16 +38,6 @@ int	on_key_release(int key, t_game *game)
 	(void)key;
 	stop_player(game);
 	return (0);
-}
-
-void	move_player(t_game *game, t_coordinate step)
-{
-	game->graphics->sprite->is_moving = true;
-	if (game->graphics->sprite->step.x == 1 )
-		game->graphics->sprite->right_facing = true;
-	else if (game->graphics->sprite->step.x == -1)
-		game->graphics->sprite->right_facing = false;
-	game->graphics->sprite->step = step;
 }
 
 int	on_key_press(int key, t_game *game)

@@ -6,11 +6,11 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:08:46 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/12 12:04:50 by aradix           ###   ########.fr       */
+/*   Updated: 2024/04/10 10:01:50 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <so_long.h>
 
 short	clean_mlx(t_graphics *graphics, short state)
 {

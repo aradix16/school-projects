@@ -6,11 +6,11 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:55:39 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/26 12:18:58 by aradix           ###   ########.fr       */
+/*   Updated: 2024/04/10 10:11:34 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <so_long.h>
 
 int	stop_game_loop(t_game *game)
 {

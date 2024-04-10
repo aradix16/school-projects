@@ -6,11 +6,11 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 19:24:03 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/18 19:39:26 by aradix           ###   ########.fr       */
+/*   Updated: 2024/04/09 14:21:51 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <so_long.h>
 
 void	init_struct(t_game *game, t_map *map, t_player *player)
 {

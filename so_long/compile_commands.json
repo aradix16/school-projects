@@ -1,0 +1,393 @@
+[
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/so_long.o",
+   "-c",
+   "srcs/so_long.c"
+  ],
+  "file": "srcs/so_long.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/error/print_error.o",
+   "-c",
+   "srcs/error/print_error.c"
+  ],
+  "file": "srcs/error/print_error.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/parsing/parsing.o",
+   "-c",
+   "srcs/parsing/parsing.c"
+  ],
+  "file": "srcs/parsing/parsing.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/parsing/check_map_extension.o",
+   "-c",
+   "srcs/parsing/check_map_extension.c"
+  ],
+  "file": "srcs/parsing/check_map_extension.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/parsing/read_and_store_map.o",
+   "-c",
+   "srcs/parsing/read_and_store_map.c"
+  ],
+  "file": "srcs/parsing/read_and_store_map.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/parsing/check_map_validity.o",
+   "-c",
+   "srcs/parsing/check_map_validity.c"
+  ],
+  "file": "srcs/parsing/check_map_validity.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/parsing/check_map_playability.o",
+   "-c",
+   "srcs/parsing/check_map_playability.c"
+  ],
+  "file": "srcs/parsing/check_map_playability.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/core/start_game_engine.o",
+   "-c",
+   "srcs/game_engine/core/start_game_engine.c"
+  ],
+  "file": "srcs/game_engine/core/start_game_engine.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/core/game_loop.o",
+   "-c",
+   "srcs/game_engine/core/game_loop.c"
+  ],
+  "file": "srcs/game_engine/core/game_loop.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/init/initialize_display_connection.o",
+   "-c",
+   "srcs/game_engine/init/initialize_display_connection.c"
+  ],
+  "file": "srcs/game_engine/init/initialize_display_connection.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/init/load_textures.o",
+   "-c",
+   "srcs/game_engine/init/load_textures.c"
+  ],
+  "file": "srcs/game_engine/init/load_textures.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/init/create_new_window.o",
+   "-c",
+   "srcs/game_engine/init/create_new_window.c"
+  ],
+  "file": "srcs/game_engine/init/create_new_window.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/init/create_new_frame_buffer.o",
+   "-c",
+   "srcs/game_engine/init/create_new_frame_buffer.c"
+  ],
+  "file": "srcs/game_engine/init/create_new_frame_buffer.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/cleanup/clean_mlx.o",
+   "-c",
+   "srcs/game_engine/cleanup/clean_mlx.c"
+  ],
+  "file": "srcs/game_engine/cleanup/clean_mlx.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/cleanup/clean_textures.o",
+   "-c",
+   "srcs/game_engine/cleanup/clean_textures.c"
+  ],
+  "file": "srcs/game_engine/cleanup/clean_textures.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/graphics/render.o",
+   "-c",
+   "srcs/game_engine/graphics/render.c"
+  ],
+  "file": "srcs/game_engine/graphics/render.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/events/key_event.o",
+   "-c",
+   "srcs/game_engine/events/key_event.c"
+  ],
+  "file": "srcs/game_engine/events/key_event.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/events/loop_event.o",
+   "-c",
+   "srcs/game_engine/events/loop_event.c"
+  ],
+  "file": "srcs/game_engine/events/loop_event.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/graphics/utils/get_boundaries.o",
+   "-c",
+   "srcs/game_engine/graphics/utils/get_boundaries.c"
+  ],
+  "file": "srcs/game_engine/graphics/utils/get_boundaries.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/graphics/draw_map.o",
+   "-c",
+   "srcs/game_engine/graphics/draw_map.c"
+  ],
+  "file": "srcs/game_engine/graphics/draw_map.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/graphics/draw_player.o",
+   "-c",
+   "srcs/game_engine/graphics/draw_player.c"
+  ],
+  "file": "srcs/game_engine/graphics/draw_player.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/graphics/utils/draw_texture_tile.o",
+   "-c",
+   "srcs/game_engine/graphics/utils/draw_texture_tile.c"
+  ],
+  "file": "srcs/game_engine/graphics/utils/draw_texture_tile.c"
+ },
+ {
+  "directory": "/home/aradix/Documents/school-projects/so_long",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinclude",
+   "-Ilibft/include",
+   "-Iminilibx-linux",
+   "-o",
+   "objs/srcs/game_engine/graphics/utils/time.o",
+   "-c",
+   "srcs/game_engine/graphics/utils/time.c"
+  ],
+  "file": "srcs/game_engine/graphics/utils/time.c"
+ }
+]

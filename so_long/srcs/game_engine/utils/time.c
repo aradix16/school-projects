@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_player.c                                      :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 18:42:14 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/13 14:04:21 by aradix           ###   ########.fr       */
+/*   Created: 2024/04/10 10:30:15 by aradix            #+#    #+#             */
+/*   Updated: 2024/04/10 10:30:24 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <so_long.h>
 
-void	stop_player(t_game *game)
+t_nsec	get_current_time(void)
 {
-	game->graphics->sprite->is_moving = false;
+	t_nsec	current_time;
+
+	clock_gettime(CLOCK_REALTIME, &current_time);
+	return (current_time);
 }
 
-void	move_player(t_game *game, t_coordinate step)
+int	get_diff_ms(t_nsec nano, t_nsec t0)
 {
-	game->graphics->sprite->is_moving = true;
-	(void)step;
+	int	ms;
+
+	ms = (nano.tv_nsec - t0.tv_nsec) / 1000000;
+	ms = (nano.tv_sec - t0.tv_sec) * 1000 + ms;
+	return (ms);
 }

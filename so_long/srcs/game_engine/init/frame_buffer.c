@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_new_frame_buffer.c                          :+:      :+:    :+:   */
+/*   frame_buffer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:00:30 by aradix            #+#    #+#             */
-/*   Updated: 2024/03/06 20:20:07 by aradix           ###   ########.fr       */
+/*   Updated: 2024/04/10 08:52:00 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <so_long.h>
 
 bool	create_new_frame_buffer(t_graphics *graphics, t_mlx_img *frame,
 		t_coordinate window_size)

@@ -1,0 +1,494 @@
+let SessionLoad = 1
+let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
+let v:this_session=expand("<sfile>:p")
+silent only
+silent tabonly
+cd ~/Documents/school-projects/so_long
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+let s:shortmess_save = &shortmess
+if &shortmess =~ 'A'
+  set shortmess=aoOA
+else
+  set shortmess=aoO
+endif
+badd +1 srcs/so_long.c
+badd +41 Makefile
+badd +1 srcs/game_engine/core/start_game_engine.c
+badd +1 srcs/game_engine/core/game_loop.c
+badd +98 srcs/game_engine/events/loop_event.c
+badd +1 include/struct.h
+badd +44 include/prototype.h
+badd +27 include/define.h
+badd +19 include/so_long.h
+badd +41 srcs/game_engine/events/key_event.c
+badd +27 srcs/game_engine/core/events.c
+badd +20 srcs/game_engine/player/move.c
+badd +18 srcs/game_engine/player/player.c
+badd +12 srcs/game_engine/player/move_player.c
+badd +26 srcs/game_engine/graphics/animation.c
+badd +12 srcs/game_engine/animation/sleep.c
+badd +25 srcs/game_engine/animations/sleep.c
+badd +13 srcs/game_engine/init/create_new_window.c
+badd +14 srcs/game_engine/animations/move.c
+argglobal
+%argdel
+set stal=2
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabrewind
+edit srcs/so_long.c
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 141 + 142) / 284)
+exe 'vert 2resize ' . ((&columns * 142 + 142) / 284)
+argglobal
+balt srcs/so_long.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 27 - ((26 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 27
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("Makefile", ":p")) | buffer Makefile | else | edit Makefile | endif
+if &buftype ==# 'terminal'
+  silent file Makefile
+endif
+balt srcs/so_long.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 41 - ((37 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 41
+normal! 056|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 141 + 142) / 284)
+exe 'vert 2resize ' . ((&columns * 142 + 142) / 284)
+tabnext
+edit include/struct.h
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+wincmd _ | wincmd |
+vsplit
+2wincmd h
+wincmd w
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 94 + 142) / 284)
+exe 'vert 2resize ' . ((&columns * 94 + 142) / 284)
+exe '3resize ' . ((&lines * 37 + 38) / 76)
+exe 'vert 3resize ' . ((&columns * 94 + 142) / 284)
+exe '4resize ' . ((&lines * 36 + 38) / 76)
+exe 'vert 4resize ' . ((&columns * 94 + 142) / 284)
+argglobal
+balt srcs/so_long.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("include/prototype.h", ":p")) | buffer include/prototype.h | else | edit include/prototype.h | endif
+if &buftype ==# 'terminal'
+  silent file include/prototype.h
+endif
+balt srcs/game_engine/animations/move.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 44 - ((37 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 44
+normal! 020|
+wincmd w
+argglobal
+if bufexists(fnamemodify("include/so_long.h", ":p")) | buffer include/so_long.h | else | edit include/so_long.h | endif
+if &buftype ==# 'terminal'
+  silent file include/so_long.h
+endif
+balt include/define.h
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 28 - ((27 * winheight(0) + 18) / 37)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 28
+normal! 019|
+wincmd w
+argglobal
+if bufexists(fnamemodify("include/define.h", ":p")) | buffer include/define.h | else | edit include/define.h | endif
+if &buftype ==# 'terminal'
+  silent file include/define.h
+endif
+balt include/prototype.h
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 30 - ((21 * winheight(0) + 18) / 36)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 30
+normal! 019|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 94 + 142) / 284)
+exe 'vert 2resize ' . ((&columns * 94 + 142) / 284)
+exe '3resize ' . ((&lines * 37 + 38) / 76)
+exe 'vert 3resize ' . ((&columns * 94 + 142) / 284)
+exe '4resize ' . ((&lines * 36 + 38) / 76)
+exe 'vert 4resize ' . ((&columns * 94 + 142) / 284)
+tabnext
+edit srcs/game_engine/core/start_game_engine.c
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+wincmd _ | wincmd |
+vsplit
+2wincmd h
+wincmd w
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 94 + 142) / 284)
+exe 'vert 2resize ' . ((&columns * 94 + 142) / 284)
+exe 'vert 3resize ' . ((&columns * 94 + 142) / 284)
+argglobal
+balt srcs/so_long.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 28 - ((27 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 28
+normal! 019|
+wincmd w
+argglobal
+if bufexists(fnamemodify("srcs/game_engine/init/create_new_window.c", ":p")) | buffer srcs/game_engine/init/create_new_window.c | else | edit srcs/game_engine/init/create_new_window.c | endif
+if &buftype ==# 'terminal'
+  silent file srcs/game_engine/init/create_new_window.c
+endif
+balt srcs/game_engine/core/start_game_engine.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 41 - ((40 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 41
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("srcs/game_engine/core/game_loop.c", ":p")) | buffer srcs/game_engine/core/game_loop.c | else | edit srcs/game_engine/core/game_loop.c | endif
+if &buftype ==# 'terminal'
+  silent file srcs/game_engine/core/game_loop.c
+endif
+balt srcs/game_engine/core/start_game_engine.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 13 - ((12 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 13
+normal! 020|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 94 + 142) / 284)
+exe 'vert 2resize ' . ((&columns * 94 + 142) / 284)
+exe 'vert 3resize ' . ((&columns * 94 + 142) / 284)
+tabnext
+edit srcs/game_engine/player/player.c
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 142 + 142) / 284)
+exe 'vert 2resize ' . ((&columns * 141 + 142) / 284)
+argglobal
+balt srcs/game_engine/player/move_player.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 18 - ((17 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 18
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("srcs/game_engine/core/events.c", ":p")) | buffer srcs/game_engine/core/events.c | else | edit srcs/game_engine/core/events.c | endif
+if &buftype ==# 'terminal'
+  silent file srcs/game_engine/core/events.c
+endif
+balt srcs/game_engine/events/key_event.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 49 - ((48 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 49
+normal! 025|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 142 + 142) / 284)
+exe 'vert 2resize ' . ((&columns * 141 + 142) / 284)
+tabnext
+edit srcs/game_engine/animations/move.c
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+wincmd _ | wincmd |
+vsplit
+2wincmd h
+wincmd w
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+wincmd =
+argglobal
+balt srcs/game_engine/animations/sleep.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 14 - ((11 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 14
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("srcs/game_engine/events/loop_event.c", ":p")) | buffer srcs/game_engine/events/loop_event.c | else | edit srcs/game_engine/events/loop_event.c | endif
+if &buftype ==# 'terminal'
+  silent file srcs/game_engine/events/loop_event.c
+endif
+balt srcs/game_engine/core/events.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 20 - ((19 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 20
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("srcs/game_engine/core/events.c", ":p")) | buffer srcs/game_engine/core/events.c | else | edit srcs/game_engine/core/events.c | endif
+if &buftype ==# 'terminal'
+  silent file srcs/game_engine/core/events.c
+endif
+balt srcs/game_engine/animations/sleep.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 29 - ((28 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 29
+normal! 015|
+wincmd w
+wincmd =
+tabnext 5
+set stal=1
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20
+let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &g:so = s:so_save | let &g:siso = s:siso_save
+set hlsearch
+nohlsearch
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
