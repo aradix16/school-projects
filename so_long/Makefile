@@ -31,8 +31,16 @@ SRCS			:=		srcs/so_long.c											\
 						srcs/game_engine/init/frame_buffer.c					\
 						srcs/game_engine/cleanup/clean_mlx.c					\
 						srcs/game_engine/cleanup/clean_textures.c				\
-						srcs/game_engine/movement/player_movement.c				\
 						srcs/game_engine/utils/time.c							\
+						srcs/game_engine/player/sleep.c							\
+						srcs/game_engine/player/move.c							\
+						srcs/game_engine/player/animation.c						\
+						srcs/game_engine/graphics/render.c						\
+						srcs/game_engine/graphics/utils/get_boundaries.c		\
+						srcs/game_engine/graphics/draw/draw_player.c			\
+						srcs/game_engine/graphics/draw/draw_map.c				\
+						srcs/game_engine/graphics/draw/lazy_draw_map.c			\
+						srcs/game_engine/graphics/draw/draw_texture_tile.c		\
 
 
 OBJS_DIR		:=		objs

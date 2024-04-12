@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:57:19 by aradix            #+#    #+#             */
-/*   Updated: 2024/04/10 10:31:14 by aradix           ###   ########.fr       */
+/*   Updated: 2024/04/12 15:07:26 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PROTOTYPE_H
 
 // ERROR
+# include "struct.h"
 int		print_error(short err);
 
 // PARSING
@@ -42,10 +43,23 @@ void	clean_textures(t_xvar *mlx_ptr, t_textures *textures);
 int		on_key_press(int key, t_game *game);
 int		on_key_release(int key, t_game *game);
 int		on_mlx_loop(t_game *game);
-// └── movements
-void	move_player(t_game *game, t_coordinate step);
-void	stop_player(t_game *game);
 // └── utils
 t_nsec	get_current_time(void);
 int		get_diff_ms(t_nsec nano, t_nsec t0);
+bool	timeout(const t_nsec t0, const int duration);
+// └── player
+bool	player_sleep(t_game *game);
+bool	player_move(t_game *game);
+bool	player_animation(t_game *game);
+// └── graphics
+void	render(t_game *game, bool lazy_draw);
+//      └── utils
+void	get_boundaries(t_game *game, t_graphics *graphics);
+//      └── draw
+void	draw_player(t_game *game);
+void	draw_map(t_game *game);
+void	lazy_draw_map(t_game *game);
+void	draw_texture_tile(t_game *game, t_coordinate start_pos,
+			int *texture_data, short facing);
+
 #endif

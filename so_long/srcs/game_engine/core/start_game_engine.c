@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:22:02 by aradix            #+#    #+#             */
-/*   Updated: 2024/04/10 10:32:17 by aradix           ###   ########.fr       */
+/*   Updated: 2024/04/12 15:03:15 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ short	start_game_engine(t_game *game)
 		return (clean_mlx(&graphics, MLX_IMAGE_FAILED));
 
 
-    // init here ?? 
+    // init here --
     game->graphics->sprite = &sprite;
     sprite.t0 = get_current_time();
-    sprite.p0 = sprite.t0;
-    sprite.state = 1;
+    sprite.p0 = get_current_time(); // need to improve clarity 
+    sprite.state = 0;
     sprite.is_moving = false;
     sprite.right_facing = false;
     game->player->pos.x *= TILE_SIZE;
     game->player->pos.y *= TILE_SIZE;
     game->graphics->sprite->step = (t_coordinate){0, 0};
-    //  render(game); ??
+    render(game, false);
 
 
 	start_game_loop(game, &graphics);

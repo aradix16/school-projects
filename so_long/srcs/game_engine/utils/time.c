@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 10:30:15 by aradix            #+#    #+#             */
-/*   Updated: 2024/04/10 10:30:24 by aradix           ###   ########.fr       */
+/*   Updated: 2024/04/12 12:54:26 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,14 @@ int	get_diff_ms(t_nsec nano, t_nsec t0)
 	ms = (nano.tv_nsec - t0.tv_nsec) / 1000000;
 	ms = (nano.tv_sec - t0.tv_sec) * 1000 + ms;
 	return (ms);
+}
+
+bool	timeout(const t_nsec t0, const int duration)
+{
+	t_nsec	current_time;
+	int		duration_diff;
+
+	current_time = get_current_time();
+	duration_diff = get_diff_ms(current_time, t0);
+	return (duration_diff >= duration);
 }
