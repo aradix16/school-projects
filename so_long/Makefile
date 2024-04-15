@@ -39,7 +39,6 @@ SRCS			:=		srcs/so_long.c											\
 						srcs/game_engine/graphics/utils/get_boundaries.c		\
 						srcs/game_engine/graphics/draw/draw_player.c			\
 						srcs/game_engine/graphics/draw/draw_map.c				\
-						srcs/game_engine/graphics/draw/lazy_draw_map.c			\
 						srcs/game_engine/graphics/draw/draw_texture_tile.c		\
 
 

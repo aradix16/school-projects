@@ -6,14 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:05:03 by aradix            #+#    #+#             */
-/*   Updated: 2024/04/12 15:23:16 by aradix           ###   ########.fr       */
+/*   Updated: 2024/04/15 16:25:26 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <so_long.h>
-
-void	lazy_draw_map(t_game *game)
-{
-    // see draw_player
-    (void)game;
-}

@@ -6,23 +6,11 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:08:25 by aradix            #+#    #+#             */
-/*   Updated: 2024/04/12 15:03:42 by aradix           ###   ########.fr       */
+/*   Updated: 2024/04/15 18:05:02 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
-
-int	on_mlx_loop(t_game *game)
-{ 
-	if (game->graphics->sprite->is_moving)
-	{
-		if (player_move(game) || player_animation(game))
-	        render(game, true);
-	}
-	else if (player_sleep(game))
-	    render(game, true);
-	return (0);
-}
 
 #define ESC 65307
 #define UP 119
@@ -55,5 +43,30 @@ int	on_key_release(int key, t_game *game)
 {
 	(void)key;
 	game->graphics->sprite->is_moving = false;
+	return (0);
+}
+
+/* bool    can_lazy_render(t_game *game) */
+/* { */
+/*     printf("%d\n", game->player->pos.x); */
+/*     printf("%d\n", game->player->pos.x); */
+/*     t_coordinate lol; */
+/**/
+/**/
+/* 	lol.x = game->player->pos.x - game->graphics->window->boundaries.x; */
+/* 	lol.y = game->player->pos.y - game->graphics->window->boundaries.y; */
+/**/
+/*     return (true); */
+/* } */
+
+int	on_mlx_loop(t_game *game)
+{
+	if (game->graphics->sprite->is_moving)
+	{
+		if (player_move(game) || player_animation(game))
+			render(game, false);
+	}
+	else if (player_sleep(game))
+		render(game, false);
 	return (0);
 }

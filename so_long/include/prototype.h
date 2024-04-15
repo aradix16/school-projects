@@ -6,7 +6,7 @@
 /*   By: aradix <aradix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:57:19 by aradix            #+#    #+#             */
-/*   Updated: 2024/04/12 15:07:26 by aradix           ###   ########.fr       */
+/*   Updated: 2024/04/15 16:28:07 by aradix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	get_boundaries(t_game *game, t_graphics *graphics);
 //      └── draw
 void	draw_player(t_game *game);
 void	draw_map(t_game *game);
-void	lazy_draw_map(t_game *game);
+void	draw_map_lazy(t_game *game);
 void	draw_texture_tile(t_game *game, t_coordinate start_pos,
 			int *texture_data, short facing);
 
